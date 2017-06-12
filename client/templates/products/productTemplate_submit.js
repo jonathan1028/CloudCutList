@@ -14,14 +14,12 @@ AutoForm.hooks({
         doc.template = 1;
         console.log(doc.name);
 
-        if(doc.subcategory === 'Base Cabinets'){
+        //Test of adding separate schema for cabinet Product
+        /*if(doc.subcategory === 'Base Cabinets'){
           console.log(doc.subcategory);
           Meteor.call('attachCabinetSchema');  
-        }
+        }*/
         
-
-
-
         //asynchronous submission
         this.result(doc);
       }
