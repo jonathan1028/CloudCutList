@@ -1,0 +1,17 @@
+
+<!-- ///////////// type="normal" allows for hooks to be activated -->
+<template name="componentTemplateEdit">
+  {{#autoForm collection="Components" doc=this id="componentTemplateEdit" type="update" class="comment-form form"}}
+    <legend>Edit Component</legend>
+    {{> afQuickField name="name"}}
+    {{> afQuickField name="type"}}
+    {{> afQuickField name="widthFormula"}}
+    {{> afQuickField name="heightFormula"}}
+    {{> afQuickField name="depthFormula"}}
+    {{> afQuickField name="buildTime"}}
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
+ 
+</template>

@@ -1,0 +1,17 @@
+<template name="componentDrawerFaceTemplateSubmit">
+  {{#autoForm collection="Components" id="componentDrawerFaceTemplateSubmit" type="insert" class="comment-form form"}}
+    <fieldset>
+      <legend>New Door Template</legend>
+      {{> afQuickField name='name'}}
+      <!-- {{> afQuickField name='type'}}
+      {{> afQuickField name='widthFormula'}}
+      {{> afQuickField name='heightFormula'}}
+      {{> afQuickField name='depthFormula'}} -->
+      {{> afQuickField name='buildTime'}}
+      
+
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>

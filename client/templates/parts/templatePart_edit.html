@@ -1,0 +1,18 @@
+<template name="templatePartEdit">
+  {{#autoForm collection="Parts" doc=this id="templatePartEdit" type="update" class="comment-form form"}}
+    <legend>Edit Template Part</legend>
+    {{> afQuickField name='name'}}
+    {{> afQuickField name='materialType' template="bootstrap3-horizontal" label-class="col-md-2" }}
+    {{> afQuickField name='widthFormula'}}
+    {{> afQuickField name='lengthFormula'}}
+    {{> afQuickField name='depthFormula'}}
+    
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <hr/>
+    <a class="btn btn-danger delete" href="#">Delete Part</a>
+  {{/autoForm}}
+
+ 
+</template>

@@ -1,0 +1,74 @@
+<template name="cutlistPage">
+  <div class="restaurant-page page">
+    <!-- {{> orderItem2}} -->
+    
+    <ul class="comments">
+
+    {{setOrderId this}}
+
+    <!-- {{#each materials}} 
+      {{setMaterialName this}}
+      <h3>{{this}}</h3>
+      
+      {{#each partNames this}}
+        <h4>{{this}}</h4>
+          <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Part Name</th>
+                    <th>Dimensions</th>
+                    <th>Cabinet</th>
+                    <th>Material</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each partsList this getMaterialName}}
+                    {{> cutlistItem}}
+                  {{/each}}
+                </tbody>
+              </table>
+          </div>
+       {{/each}}
+    {{/each}} -->
+
+    <h1 class="center">{{this.jobName}} - Cut Lists</h1>
+
+
+    {{#each componentTypes}}
+        <h3>{{this}} Cut List</h3>
+          <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    
+                    <th>Part Name</th>
+                    <th>Material</th>
+                    <th>Dimensions</th> 
+                    <th>Product</th>  
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each parts this}}
+                  <tr>
+                    
+                    <td>{{this.name}}</td>
+                    <td>{{materialName this.inputCostId}}</td>
+                    <td class="text-left text-middle">{{convertToFraction this.width}}" x {{convertToFraction this.length}}" x {{convertToFraction this.depth}}"</td>
+                    <td>{{this.productName}}</td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+          </div>
+      {{/each}} 
+
+    
+
+
+
+    </ul>
+   
+
+  </div>
+</template>

@@ -1,0 +1,39 @@
+<template name="schedulesPage">
+  <div class="restaurant-page page">
+    <!-- {{> orderItem2}} -->
+
+    {{setOrderId this}}
+    
+    <ul class="comments">
+
+     <h1 class="center">{{this.jobName}} - Schedules</h1>
+      
+
+      {{#each componentTypes}}
+        <h3>{{this}} Schedule</h3>
+          <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Dimensions</th>
+                    <th>Product</th>  
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each components this}}
+                  <tr>
+                    <td class="text-left text-middle">{{convertToFraction this.width}}" x {{convertToFraction this.height}}" x {{convertToFraction this.depth}}"</td>
+                    <td>{{productName this.productId}}</td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+          </div>
+      {{/each}} 
+
+
+    </ul>
+   
+
+  </div>
+</template>

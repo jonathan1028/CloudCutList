@@ -1,0 +1,23 @@
+<template name="productTemplatePartItem">
+
+    <div class="restaurant">
+      <div class="restaurant-content">
+        <h3><a href="">{{name}} </a></h3>
+       
+	        <strong>
+            <p> Width Formula: {{widthFormula}}</p>
+            <p> Length Formula: {{lengthFormula}}</p>
+            <p> Depth Formula: {{depthFormula}}</p>
+            <p> Material Type: {{materialType}}</p>
+            <br>
+          </strong>
+          
+      </div>
+      <a class="discuss btn btn-danger delete" href="#">Delete</a>
+      <a href="{{pathFor 'templatePartEdit'}}" class="discuss btn btn-default">Edit</a>
+      
+    </div>
+
+</template>
+
+

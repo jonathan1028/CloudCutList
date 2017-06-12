@@ -1,0 +1,52 @@
+<template name="customersList">
+  
+  <div class="restaurants">
+    <h3>Customers List</h3>
+    <h3><a href="{{pathFor 'customerSubmit'}}" class="discuss btn btn-default">New Customer</a></h3>
+   
+    
+    
+    <div class="table">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <!-- <th>Company</th> -->
+            <th>Cell Phone</th>
+            <th>Office Phone</th>
+            <th>Email</th>
+            <!-- <th>Last Contacted</th> -->
+          </tr>
+        </thead>
+		  <tbody>
+		    {{#each customers}}
+		      <tr class="tableRow">
+		      	 
+		        <td class="text-left">{{name}}</td>
+		        <!-- <td class="text-left text-middle">{{getCompany.name}}</td> -->
+		        <td class="text-left text-middle">{{this.mPhone}}</td>
+		        <td class="text-left text-middle">{{this.oPhone}}</td>
+		        <td class="text-left text-middle">{{this.email}}</td>
+		        <!-- <td class="text-left text-middle">{{lastContact}}</td> -->
+		        <!-- </a> -->
+		        
+		      </tr>
+		    {{/each}}
+		    
+		   <!--  {{#EasySearch.Each index=indexTwo}}
+		      <tr class="tableRow">
+		        <td class="text-left">Test</td>
+		        <td class="text-left text-middle">{{name}}</td>
+		        <td class="text-left text-middle"></td>
+		        <td class="text-left text-middle"></td>
+		        <td class="text-left text-middle"></td>
+		        <td class="text-left text-middle"></td>
+		          
+		      </tr> -->
+		    
+		  </tbody>
+      </table>
+    </div>
+  </div>
+</template>

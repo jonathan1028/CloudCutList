@@ -1,0 +1,156 @@
+cloneProduct = function(productId, templateId){
+  //var must be named 'product' in order to work properly with supplied formulas. 
+  var product = Products.findOne({_id: productId});
+  var orderId = product.orderId;
+  
+  
+  Components.find({productId: templateId}).forEach(function(c) {
+    //var must be named 'component' in order to work properly with supplied formulas. 
+    //var component = c;
+    var width = eval(c.widthFormula);
+    var height = eval(c.heightFormula);
+    var depth = eval(c.depthFormula);  
+    var componentName = c.name;
+    //componentMaterial = '';
+
+    if(c.type === 'Door'){
+      var doorTemplateName = Components.findOne({_id: product.doorStyle}).name;
+      componentName = doorTemplateName;
+    
+    }
+    if(c.type === 'Drawer Face'){
+      var doorTemplateName = Components.findOne({_id: product.drawerFaceStyle}).name;
+      componentName = doorTemplateName;
+
+    }
+
+    
+   
+    var newComponent = {
+          orderId: orderId,
+          productId: productId,
+          name: componentName,
+          type: c.type,
+          width: width,
+          height: height,
+          depth: depth,
+          widthFormula: c.widthFormula,
+          heightFormula: c.heightFormula,
+          depthFormula: c.depthFormula,
+          buildTime: c.buildTime,
+    };
+    
+    Parts.find({componentId: c._id}).forEach(function(p) {
+      var component = newComponent;
+      var partWidth = eval(p.widthFormula);
+      var partLength = eval(p.lengthFormula);
+      var partDepth = eval(p.depthFormula); 
+      var partMaterial = eval(p.materialFormula);
+      
+      if(p.materialType === "Case")
+      {
+        partMaterial = product.caseMaterial;
+      }
+      if(p.materialType === "Door Frame")
+      {
+        partMaterial = product.doorFrameMaterial;
+      }  
+      if(p.materialType === "Door Panel")
+      {
+        partMaterial = product.doorPanelMaterial;
+      } 
+      if(p.materialType === "Drawer Face Frame")
+      {
+        partMaterial = product.drawerFaceFrameMaterial;
+      } 
+      if(p.materialType === "Drawer Face Panel")
+      {
+        partMaterial = product.drawerFacePanelMaterial;
+      } 
+      if(p.materialType === "Drawer Box Side")
+      {
+        partMaterial = product.drawerBoxSideMaterial;
+      } 
+      if(p.materialType === "Drawer Box Bottom")
+      {
+        partMaterial = product.drawerBoxBottomMaterial;
+      } 
+      if(p.materialType === "Face Frame")
+      {
+        partMaterial = product.ffMaterial;
+      } 
+      if(p.materialType === "Shelf")
+      {
+        partMaterial = product.shelfMaterial;
+      } 
+      if(p.materialType === "Runner")
+      {
+        partMaterial = product.runners;
+      } 
+      if(p.materialType === "Hinge")
+      {
+        partMaterial = product.hinges;
+      } 
+      if(p.materialType === "Pull")
+      {
+        partMaterial = product.pulls;
+      } 
+
+      var newPart = {
+          orderId: orderId,
+          productId: productId,
+          name: p.name,
+          productName: product.name,
+          componentName: c.name,
+          componentType: c.type,
+          materialType: p.materialType,
+          width: partWidth,
+          length: partLength,
+          depth: partDepth,
+          material: partMaterial,
+          widthFormula: p.widthFormula,
+          lengthFormula: p.lengthFormula,
+          depthFormula: p.depthFormula,
+          materialFormula: p.materialFormula,
+          inputCostId: partMaterial,
+
+      };
+
+      Meteor.call('partInsert', newPart, function(error, resultId) {
+        if (error){
+          throwError(error.reason);
+        }  
+      });
+
+      if(product.subcategory === 'Wall Cabinets' && product.height > 24 && c.type === 'Shelf')
+      {
+        Meteor.call('partInsert', newPart, function(error, resultId) {
+          if (error){
+            throwError(error.reason);
+          }  
+        });
+      }
+
+      if(product.subcategory === 'Wall Cabinets' && product.height > 36 && c.type === 'Shelf')
+      {
+        Meteor.call('partInsert', newPart, function(error, resultId) {
+          if (error){
+            throwError(error.reason);
+          }  
+        });
+      }
+    
+    });
+
+    
+    
+    console.log(newComponent);
+    Meteor.call('componentInsert', newComponent, function(error, resultId) {
+      if (error){
+        throwError(error.reason);
+      } 
+    });
+
+  });
+
+}

@@ -1,0 +1,19 @@
+<template name="productTemplateSubmit">
+  {{#autoForm collection="Products" id="productTemplateSubmit" type="insert" class="comment-form form"}}
+    <fieldset>
+      <legend>Add Product Template</legend>
+      {{> afQuickField name='name' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='category' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='subcategory' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='model' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='width' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='height' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='depth' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='notes' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      
+
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>

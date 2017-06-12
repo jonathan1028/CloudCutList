@@ -1,0 +1,16 @@
+<template name="customerSubmit">
+  {{#autoForm collection="Customers" id="customerSubmit" type="insert" template="bootstrap3-inline" class="comment-form form"}}
+    <fieldset>
+      <legend>New Customer</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='phone'}}
+      {{> afQuickField name='email'}}
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+
+</template>
+
+    
+    

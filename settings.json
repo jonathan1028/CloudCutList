@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+    	"MONGO_URL": "mongodb://admin:admin@ds131119.mlab.com:31119/cloudcutlist2"
+	}
+  }
+}

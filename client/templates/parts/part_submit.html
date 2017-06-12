@@ -1,0 +1,18 @@
+<template name="partSubmit">
+  {{#autoForm collection="Parts" id="partSubmit" type="insert" componentId=componentId class="comment-form form"}}
+    <fieldset>
+      <legend>Add Part</legend>
+      {{> afQuickField name='name' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='materialType' template="bootstrap3-horizontal" label-class="col-md-2" }}
+      {{> afQuickField name='widthFormula' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='lengthFormula' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='depthFormula' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      
+     
+     
+
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>

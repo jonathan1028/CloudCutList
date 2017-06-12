@@ -1,0 +1,64 @@
+<template name="estimatePage">
+  <div class="restaurant-page page">
+    {{> orderItem2}}
+
+    <div class="restaurant">
+      <div class="restaurant-content">
+        <form>
+        
+          <div class="form-group">
+            <label class="control-label" for="title">Mark-Up (%)</label>
+            <div class="controls">
+                <input name="markUp" type="decimal" value=100 placeholder="" class="form-control"/>
+            </div>
+          </div>
+
+          <p>Project Costs: {{orderCost}}</p>
+          <p>Mark-Up: {{markUp}}</p>
+          <p><strong>Customer Total: {{customerCost}}</strong></p>
+          
+          <input type="submit" value="Update" class="btn btn-primary"/>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="table">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Dimensions</th>
+            <th class="text-right text-middle">Cost</th>
+          </tr>
+        </thead>
+      <tbody>
+        {{#each products}}
+          <tr class="tableRow">
+             
+            <td class="text-left">{{name}}</td>
+            <td>{{convertToFraction this.width}}" x {{convertToFraction this.height}}" x {{convertToFraction this.depth}}"</td>
+            <td class="text-right text-middle">{{productCost}}</td>
+          
+            
+          </tr>
+        {{/each}}
+        
+       <!--  {{#EasySearch.Each index=indexTwo}}
+          <tr class="tableRow">
+            <td class="text-left">Test</td>
+            <td class="text-left text-middle">{{name}}</td>
+            <td class="text-left text-middle"></td>
+            <td class="text-left text-middle"></td>
+            <td class="text-left text-middle"></td>
+            <td class="text-left text-middle"></td>
+              
+          </tr> -->
+        
+      </tbody>
+      </table>
+    </div>
+   
+  </div>
+</template>

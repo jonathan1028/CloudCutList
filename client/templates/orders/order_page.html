@@ -1,0 +1,22 @@
+<template name="orderPage">
+  <div class="restaurant-page page">
+    {{> orderItem}}
+    
+    {{#if currentUser}}
+      {{> productSubmit orderId=_id}}
+    {{else}}
+      <p>Please login to rate this plate.</p>
+    {{/if}}
+    
+    <ul class="comments">
+      {{#each products}}
+        {{> productItem}}
+      {{/each}}
+    </ul>
+    
+    
+    <!-- {{> cabinetSubmit}} -->
+   
+
+  </div>
+</template>

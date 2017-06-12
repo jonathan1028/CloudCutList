@@ -1,0 +1,18 @@
+<template name="partPage">
+  <div class="plate-page page">
+    {{> plateItem}}
+
+    {{#if currentUser}}
+      {{> reviewSubmit}}
+    {{else}}
+      <p>Please login to rate this plate.</p>
+    {{/if}}
+
+    <ul class="comments">
+      {{#each reviews}}
+        {{> reviewItem}}
+      {{/each}}
+    </ul>
+    
+  </div>
+</template>

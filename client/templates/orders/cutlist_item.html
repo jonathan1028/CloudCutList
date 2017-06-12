@@ -1,0 +1,20 @@
+<template name="cutlistItem">
+
+    <!-- <div class="restaurant">
+      <div class="restaurant-content">
+        <h3><a>{{width}}" x {{height}}"  -  {{cabinetName}}</a></h3>
+      </div>
+    </div> -->
+
+	{{#if newPart description}}<h4>{{description}}</h4>{{/if}}
+	<tr>
+	  <td>{{name}}</td>
+	  <td class="text-left text-middle">{{width}}" x {{length}}" x {{depth}}</td>
+	  
+	  <td>{{productName this}}</td>
+	  <td>{{materialName this.inputCostId}}</td>
+	  <!-- <td>{{productNotes this}}</td> -->
+	</tr>
+</template>
+
+

@@ -1,0 +1,17 @@
+<template name="componentTemplateSubmit">
+  {{#autoForm collection="Components" id="componentTemplateSubmit" type="insert" class="comment-form form"}}
+    <fieldset>
+      <legend>Add Component Template</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='type'}}
+      {{> afQuickField name='widthFormula'}}
+      {{> afQuickField name='heightFormula'}}
+      {{> afQuickField name='depthFormula'}}
+      {{> afQuickField name='buildTime' label='Build Time (Hrs)'}}
+      
+
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>

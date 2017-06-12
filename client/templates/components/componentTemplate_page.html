@@ -1,0 +1,18 @@
+<template name="componentTemplatePage">
+  <div class="restaurant-page page">
+
+    {{> componentTemplateItem}}
+   
+    {{> partSubmit componentId=_id}}
+    <ul class="comments"> 
+        <h3>Parts</h3>
+        {{#each parts this}}
+          {{> productTemplatePartItem}}
+        {{/each}}
+        
+      
+    </ul>
+     
+
+  </div>
+</template>

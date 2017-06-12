@@ -1,0 +1,19 @@
+<template name="inputCostEdit">
+  {{#autoForm collection="InputCosts" doc=this id="inputCostEdit" type="update" class="comment-form form"}}
+    <legend>Edit Input Cost Item</legend>
+    {{> afQuickField name='name'}}
+    {{> afQuickField name='type'}}
+    {{> afQuickField name='cost'}}
+    {{> afQuickField name='width'}}
+    {{> afQuickField name='length'}}
+    {{> afQuickField name='depth'}}
+    {{> afQuickField name='unit'}}
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <hr/>
+    <a class="btn btn-danger delete" href="#">Delete Input Cost Item</a>
+  {{/autoForm}}
+
+ 
+</template>

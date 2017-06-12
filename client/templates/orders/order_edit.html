@@ -1,0 +1,16 @@
+<template name="orderEdit">
+  {{#autoForm collection="Orders" doc=this id="orderEdit" type="update" class="comment-form form"}}
+    <legend>Edit Order</legend>
+    {{> afFormGroup name='customerId' type="select" options=optionsHelper template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+    {{> afQuickField name='jobName'}}
+    {{> afQuickField name='dueDate'}}
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <br>
+    <a class="discuss btn btn-danger deleteOrder" href="#">Delete</a>
+  {{/autoForm}}
+
+  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+ 
+</template>

@@ -1,0 +1,52 @@
+<template name="orderSubmit">
+  {{#autoForm collection="Orders" id="orderSubmit" type="insert" template="bootstrap3-inline" class="comment-form form"}}
+    <fieldset>
+      <legend>New Order</legend>
+      {{> afFormGroup name='customerId' type="select" options=optionsHelper template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='jobName'}}
+      {{> afQuickField name='dueDate'}}
+     
+      <!-- <div class="form-group">
+      <label class="control-label" for="url">Due Date</label>
+      <div class="controls">
+          <input name="dueDate"  class="form-control" id="my-datepicker" placeholder="Date">
+      </div>
+    </div> -->
+
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+
+  <!-- <form class="main form page">
+    
+    <div class="form-group">
+      <label class="control-label" for="title">Customer Name</label>
+      <div class="controls">
+          <input name="name" id="name" type="text" value="" placeholder="" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="style">Cabinet Style</label>
+      <select name="style" class="form-control">
+            <option disabled="disabled" selected="selected">Select</option> 
+          {{#each cabinetStyle}}
+            <option value={{this.name}}>{{this.label}}</option>
+          {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="url">Due Date</label>
+      <div class="controls">
+          <input name="dueDate" type="text" class="form-control" id="my-datepicker" placeholder="Date">
+      </div>
+    </div>
+    
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+  </form> -->
+</template>
+
+    
+    

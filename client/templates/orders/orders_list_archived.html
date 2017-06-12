@@ -1,0 +1,14 @@
+<template name="ordersListArchived">
+  
+  <div class="restaurants">
+    <h3>Archived Orders</h3>
+    
+    <div class="btn-group">
+       <a href="{{pathFor 'ordersList'}}" class="btn btn-default btn-small">Active Orders</a>
+    </div>
+
+    {{#each orders}}
+      {{> orderItemArchived}}
+    {{/each}}
+  </div>
+</template>

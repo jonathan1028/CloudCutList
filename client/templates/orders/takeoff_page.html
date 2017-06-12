@@ -1,0 +1,38 @@
+<template name="takeoffPage">
+  <div class="restaurant-page page">
+    {{> orderItem}}
+    
+    <ul class="comments">
+      <h3>TakeOff Sheet</h3>
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Order Quantity</th>
+                <th>Item</th>
+                <th>Full Description</th>
+                <th>Exact Quantity Needed</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {{#each materials}}
+                <tr>
+                  <td class="text-right">{{orderQuantity this}}</td>
+                  <td class="text-left text-middle">{{this.name}}</td>
+                  <td class="text-left text-middle">{{this.description}}</td>
+                  <td class="text-right text-middle">{{exactQuantity this}} </td>
+                  
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      
+      
+
+    </ul>
+   
+
+  </div>
+</template>

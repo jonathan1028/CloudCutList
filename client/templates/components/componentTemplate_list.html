@@ -1,0 +1,92 @@
+<template name="componentTemplatesList">
+  
+  <div>
+    <h2>Component Templates</h2>
+    <h3><a href="{{pathFor 'componentTemplateSubmit'}}" class="discuss btn btn-default">New Component Template</a></h3>
+    
+
+    <h3>Cases</h3>
+    {{#each cases}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Face Frames</h3>
+    {{#each fFrames}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Door Layouts</h3>
+    {{#each doors}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Drawer Face Layouts</h3>
+    {{#each drawerFaces}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Drawer Boxes</h3>
+    {{#each drawerBoxes}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Shelves</h3>
+    {{#each shelves}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Door Style Builds</h3>
+    <h3><a href="{{pathFor 'componentDoorTemplateSubmit'}}" class="discuss btn btn-default">New Door Style Build</a></h3>
+    {{#each doorComponents}}
+   
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+    <h3>Drawer Face Style Builds</h3>
+    <h3><a href="{{pathFor 'componentDrawerFaceTemplateSubmit'}}" class="discuss btn btn-default">New Drawer Face Style Build</a></h3>
+    {{#each drawerFaceComponents}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+  </div>
+</template>

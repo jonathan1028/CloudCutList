@@ -1,0 +1,34 @@
+<template name="productsList">
+  
+  <div>
+    <h3>Product Templates</h3>
+    <h3><a href="{{pathFor 'productTemplateSubmit'}}" class="discuss btn btn-default">New Product Template</a></h3>
+    <h4>Base Cabinets</h4>
+    {{#each baseCabinets}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'productTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+    <h4>Wall Cabinets</h4>
+    {{#each wallCabinets}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'productTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+    <h4>Tall Cabinets</h4>
+    {{#each tallCabinets}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'productTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+  </div>
+</template>

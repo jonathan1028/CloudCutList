@@ -1,0 +1,16 @@
+<template name="productPage">
+  <div class="restaurant-page page">
+   {{> productItem}}
+    
+    <ul class="comments"> 
+        <h3>Parts</h3>
+        {{#each parts this}}
+          {{> partItem}}
+        {{/each}}
+        
+      
+    </ul>
+     
+
+  </div>
+</template>

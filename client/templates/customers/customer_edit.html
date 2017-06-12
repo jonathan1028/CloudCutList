@@ -1,0 +1,14 @@
+<template name="customerEdit">
+  {{#autoForm collection="Customers" doc=this id="customerEdit" type="update" class="comment-form form"}}
+    <legend>Edit Customer</legend>
+    {{> afQuickField name="name"}}
+    {{> afQuickField name='mPhone'}}
+    {{> afQuickField name='oPhone'}}
+    {{> afQuickField name='email'}}
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <hr/>
+  {{/autoForm}}
+
+ 
+</template>

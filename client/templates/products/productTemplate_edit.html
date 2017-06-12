@@ -1,0 +1,17 @@
+
+<!-- ///////////// type="normal" allows for hooks to be activated -->
+<template name="productTemplateEdit">
+  {{#autoForm collection="Products" doc=this id="productTemplateEdit" type="update" class="comment-form form"}}
+    <legend>Edit Product</legend>
+      {{> afQuickField name='name' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='category' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='subcategory' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='model' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+      {{> afQuickField name='notes' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
+   
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
+ 
+</template>

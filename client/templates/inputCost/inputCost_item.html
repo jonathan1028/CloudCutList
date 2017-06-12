@@ -1,0 +1,18 @@
+<template name="inputCostItem">
+
+    <div class="list">
+      <div class="list-item">
+        <h3><a>{{name}}</a></h3>
+      	<!-- <strong><p>Cost: {{formattedCost cost}}</p></strong>
+      	{{#if notLabor this}}<p>Dimensions: {{width}}" x {{height}}" x {{depth}}"</p>{{/if}} -->
+      	<p>Dimensions: {{width}}" x {{length}}" x {{depth}}"</p>
+      	<p>Cost: ${{cost}}/{{unit}}</p>
+
+      </div>
+      
+      <a href="{{pathFor 'inputCostEdit'}}" class="float-right btn btn-default">Edit</a>
+    </div>
+
+</template>
+
+

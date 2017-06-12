@@ -1,0 +1,16 @@
+<template name="inputCostsList">
+  <h3><a href="{{pathFor 'inputCostSubmit'}}" class="discuss btn btn-default">Add Input Cost </a></h3>
+
+  <div>
+    <h3>Labor</h3>
+    {{#each laborItem}}
+      {{> inputCostItem}}
+    {{/each}}
+
+    <h3>Materials</h3>
+    {{#each materialItem}}
+      {{> inputCostItem}}
+    {{/each}}
+
+  </div>
+</template>

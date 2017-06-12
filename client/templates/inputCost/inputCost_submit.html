@@ -1,0 +1,17 @@
+<template name="inputCostSubmit">
+  {{#autoForm collection="InputCosts" id="inputCostSubmit" type="insert" template="bootstrap3-inline" class="comment-form form"}}
+    <fieldset>
+      <legend>New Input Cost</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='type'}}
+      {{> afQuickField name='cost'}}
+      {{> afQuickField name='width'}}
+      {{> afQuickField name='length'}}
+      {{> afQuickField name='depth'}}
+      {{> afQuickField name='unit'}}
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+
+</template>

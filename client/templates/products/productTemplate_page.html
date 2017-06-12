@@ -1,0 +1,43 @@
+<template name="productTemplatePage">
+  <div class="restaurant-page page">
+   
+   <div class="list">
+      <div class="list-item">
+        <h3><a href="{{pathFor 'productPage'}}">{{name}}</a><span></span></h3>
+      <p>Default Width: {{width}}"</p>
+      <p>Default Height: {{height}}"</p>
+      <p>Default Depth: {{depth}}"</p>
+      <p>Parts: {{partCount}}</p>
+      <p>Category: {{category}}</p>
+      <p>Subcategory: {{subcategory}}</p>
+      <p>Title: {{title}}</p>
+
+      </div>
+      
+      
+      <a class="discuss btn btn-danger deleteProduct" href="#">Delete</a>
+      <a href="{{pathFor 'productTemplateEdit'}}" class="discuss btn btn-default">Edit</a>
+    </div>
+    {{> componentSubmit productId=_id}}
+    {{> partSubmit}}
+
+    <ul class="comments"> 
+        <h3>Components</h3>
+        {{#each components}}
+          {{> componentItem}}
+        {{/each}}
+      
+    </ul>
+
+    <ul class="comments"> 
+        <h3>Parts</h3>
+        {{#each parts this}}
+          {{> productTemplatePartItem}}
+        {{/each}}
+        
+      
+    </ul>
+     
+
+  </div>
+</template>

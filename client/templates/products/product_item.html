@@ -1,0 +1,58 @@
+<template name="productItem">
+
+    <div class="list">
+      <div class="list-item">
+        <h3><a href="{{pathFor 'productPage'}}">{{name}}</a><span></span></h3>
+      <p>Dimensions: {{width}}" x {{height}}" x {{depth}}"</p>
+      
+      <h4>Finish</h4>
+      <p>Type: {{finishType}}</p>
+      <p>Color: {{finishColor}}</p>
+
+      <h4>Doors & Drawers</h4>
+      <p>Door Style: {{lookUpStyleName doorStyle}}</p>
+      <p>Drawer Face Style: {{lookUpStyleName drawerFaceStyle}}</p>
+      <p>Top Offset: {{topOffset}}</p>
+      <p>Bottom Offset: {{bottomOffset}}</p>
+      <p>Left Offset: {{leftOffset}}</p>
+      <p>Right Offset: {{rightOffset}}</p>
+      <p>Drawer Offset: {{drawerOffset}}</p>
+      
+      
+      <h4>Materials</h4>
+      <p>Cases: {{lookUpMaterialName caseMaterial}}</p>
+      <p>Door Frames: {{lookUpMaterialName doorFrameMaterial}}</p>
+      <p>Door Panels: {{lookUpMaterialName doorPanelMaterial}}</p>
+
+      <p>Drawer Face Frames: {{lookUpMaterialName drawerFaceFrameMaterial}}</p>
+      <p>Drawer Face Panels: {{lookUpMaterialName drawerFacePanelMaterial}}</p>
+      <p>Drawer Box Sides: {{lookUpMaterialName drawerBoxSideMaterial}}</p>
+      <p>Drawer Box Bottoms: {{lookUpMaterialName drawerBoxBottomMaterial}}</p>
+      
+      <p>Face Frames: {{lookUpMaterialName ffMaterial}}</p>
+      <p>Shelves: {{lookUpMaterialName shelfMaterial}}</p>
+      
+     
+      
+      
+
+      <h4>Hardware</h4>
+      <p>Drawer Runners: {{lookUpMaterialName runners}}</p>
+      <p>Hinges: {{lookUpMaterialName hinges}}</p>
+      <p>Pulls: {{pulls}}</p>
+
+      <h4>Notes</h4>
+      <p>{{notes}}</p>
+
+      <br>
+      <p>Material Cost: {{materialCost}}</p>
+      <p>Labor Cost: {{laborCost}}</p>
+      <strong><p>Total Cost: {{totalCost}}</p></strong>
+      </div>
+      
+      <a class="discuss btn btn-danger deleteProduct" href="#">Delete</a>
+    </div>
+
+</template>
+
+

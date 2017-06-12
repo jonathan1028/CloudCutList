@@ -1,0 +1,22 @@
+<template name="componentItem">
+
+    <div class="restaurant">
+      <div class="restaurant-content">
+        <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}}</a><span></span></h3>
+          
+          <strong>
+            <p> Width Formula: {{widthFormula}}</p>
+            <p> Height Formula: {{heightFormula}}</p>
+            <p> Depth Formula: {{depthFormula}}</p>
+          </strong>
+     
+      </div>
+      
+      <a class="discuss btn btn-danger delete" href="#">Delete</a>
+      <a href="{{pathFor 'componentEdit'}}" class="discuss btn btn-default">Edit</a>
+
+    </div>
+
+</template>
+
+
