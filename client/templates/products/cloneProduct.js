@@ -2,6 +2,7 @@ cloneProduct = function(productId, templateId){
   //var must be named 'product' in order to work properly with supplied formulas. 
   var product = Products.findOne({_id: productId});
   var orderId = product.orderId;
+  var order = Orders.findOne({_id: orderId});
   
   
   Components.find({productId: templateId}).forEach(function(c) {
@@ -14,12 +15,12 @@ cloneProduct = function(productId, templateId){
     //componentMaterial = '';
 
     if(c.type === 'Door'){
-      var doorTemplateName = Components.findOne({_id: product.doorStyle}).name;
+      var doorTemplateName = Components.findOne({_id: order.doorStyle}).name;
       componentName = doorTemplateName;
     
     }
     if(c.type === 'Drawer Face'){
-      var doorTemplateName = Components.findOne({_id: product.drawerFaceStyle}).name;
+      var doorTemplateName = Components.findOne({_id: order.drawerFaceStyle}).name;
       componentName = doorTemplateName;
 
     }
@@ -49,51 +50,51 @@ cloneProduct = function(productId, templateId){
       
       if(p.materialType === "Case")
       {
-        partMaterial = product.caseMaterial;
+        partMaterial = order.caseMaterial;
       }
       if(p.materialType === "Door Frame")
       {
-        partMaterial = product.doorFrameMaterial;
+        partMaterial = order.doorFrameMaterial;
       }  
       if(p.materialType === "Door Panel")
       {
-        partMaterial = product.doorPanelMaterial;
+        partMaterial = order.doorPanelMaterial;
       } 
       if(p.materialType === "Drawer Face Frame")
       {
-        partMaterial = product.drawerFaceFrameMaterial;
+        partMaterial = order.drawerFaceFrameMaterial;
       } 
       if(p.materialType === "Drawer Face Panel")
       {
-        partMaterial = product.drawerFacePanelMaterial;
+        partMaterial = order.drawerFacePanelMaterial;
       } 
       if(p.materialType === "Drawer Box Side")
       {
-        partMaterial = product.drawerBoxSideMaterial;
+        partMaterial = order.drawerBoxSideMaterial;
       } 
       if(p.materialType === "Drawer Box Bottom")
       {
-        partMaterial = product.drawerBoxBottomMaterial;
+        partMaterial = order.drawerBoxBottomMaterial;
       } 
       if(p.materialType === "Face Frame")
       {
-        partMaterial = product.ffMaterial;
+        partMaterial = order.ffMaterial;
       } 
       if(p.materialType === "Shelf")
       {
-        partMaterial = product.shelfMaterial;
+        partMaterial = order.shelfMaterial;
       } 
       if(p.materialType === "Runner")
       {
-        partMaterial = product.runners;
+        partMaterial = order.runners;
       } 
       if(p.materialType === "Hinge")
       {
-        partMaterial = product.hinges;
+        partMaterial = order.hinges;
       } 
       if(p.materialType === "Pull")
       {
-        partMaterial = product.pulls;
+        partMaterial = order.pulls;
       } 
 
       var newPart = {

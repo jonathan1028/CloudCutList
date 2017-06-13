@@ -2,6 +2,7 @@ cloneDoor = function(productId, templateId){
   //var must be named 'product' in order to work properly with supplied formulas. 
   var product = Products.findOne({_id: productId});
   var orderId = product.orderId;
+  var order = Orders.findOne({_id: orderId});
   console.log("CloneDoor Entered");
   
   Components.find({productId: productId, type: 'Door'}).forEach(function(c) {
@@ -11,7 +12,7 @@ cloneDoor = function(productId, templateId){
     console.log(c.name);
 
     //Finds all parts associated with the Door Style Template
-    Parts.find({componentId: product.doorStyle}).forEach(function(p) {
+    Parts.find({componentId: order.doorStyle}).forEach(function(p) {
       
       console.log("Entered CloneDoor Parts");
 
@@ -23,14 +24,14 @@ cloneDoor = function(productId, templateId){
       console.log("Material Type =", p.materialType);
       if(p.materialType === "Door Frame")
       {
-        partMaterial = product.doorFrameMaterial;
+        partMaterial = order.doorFrameMaterial;
       }  
       else if(p.materialType === "Door Panel")
       {
-        partMaterial = product.doorPanelMaterial;
+        partMaterial = order.doorPanelMaterial;
       }
       else if(p.materialType === 'Hinge'){
-        partMaterial = product.hinges;
+        partMaterial = order.hinges;
       }
       else
       {

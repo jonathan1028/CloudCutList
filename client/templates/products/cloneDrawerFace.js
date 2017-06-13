@@ -2,6 +2,7 @@ cloneDrawerFace = function(productId, templateId){
   //var must be named 'product' in order to work properly with supplied formulas. 
   var product = Products.findOne({_id: productId});
   var orderId = product.orderId;
+  var order = Orders.findOne({_id: orderId});
   console.log("CloneDrawer Entered");
   
   Components.find({productId: productId, type: 'Drawer Face'}).forEach(function(c) {
@@ -11,7 +12,7 @@ cloneDrawerFace = function(productId, templateId){
     console.log(c.name);
 
     //Finds all parts associated with the Door Style Template
-    Parts.find({componentId: product.drawerFaceStyle}).forEach(function(p) {
+    Parts.find({componentId: order.drawerFaceStyle}).forEach(function(p) {
       
       console.log("Entered CloneDrawer Parts");
 
@@ -23,15 +24,15 @@ cloneDrawerFace = function(productId, templateId){
 
       if(p.materialType === "Drawer Face Frame")
       {
-        partMaterial = product.drawerFaceFrameMaterial;
+        partMaterial = order.drawerFaceFrameMaterial;
       }  
       else if(p.materialType === "Drawer Face Panel")
       {
-        partMaterial = product.drawerFacePanelMaterial;
+        partMaterial = order.drawerFacePanelMaterial;
       }
       else if(p.materialType === 'Runner'){
       //Sets componement material to inherit from product
-        partMaterial = product.runners;
+        partMaterial = order.runners;
       }
       else
       {

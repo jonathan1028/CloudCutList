@@ -1,4 +1,4 @@
-Template.orderItem2.helpers({
+Template.orderItemFull.helpers({
  productCount: function() {
     return Products.find({orderId: this._id}).count();
   },
@@ -99,4 +99,30 @@ Template.orderItem2.helpers({
     
     return name;
   },
+  doorStyleName: function() {
+    return Components.findOne({_id: this.doorStyle}).name;
+  },
+  drawerFaceStyleName: function() {
+    return Components.findOne({_id: this.drawerFaceStyle}).name;
+  },
+  doorPanelMaterialName: function() {
+    return InputCosts.findOne({_id: this.doorPanelMaterial}).name;
+  },
+  drawerFacePanelMaterialName: function() {
+    return InputCosts.findOne({_id: this.drawerFacePanelMaterial}).name;
+  },
+  caseMaterialName: function() {
+    return InputCosts.findOne({_id: this.caseMaterial}).name;
+  },
+  drawerBoxSideMaterialName: function() {
+    return InputCosts.findOne({_id: this.drawerBoxSideMaterial}).name;
+  },
+});
+
+Template.orderItem.events({ 
+  'click .archive': function(e) { e.preventDefault();
+        Orders.update(this._id, {
+          $set: {status: "Archive"}
+        }); 
+    }
 });
