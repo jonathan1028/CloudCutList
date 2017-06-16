@@ -25,6 +25,9 @@
       <ul class="nav navbar-nav">
         {{#if currentUser}}<li><a href="{{pathFor 'componentTemplatesList'}}">Components</a></li>{{/if}}
       </ul>
+      <ul class="nav navbar-nav">
+        {{#if currentUser}}<li><a href="#">Settings</a></li>{{/if}}
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
       </ul>
