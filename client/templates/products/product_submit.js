@@ -164,9 +164,7 @@ AutoForm.hooks({
         //Sets the toe kick height and depth for wall cabinets to 0
         if(doc.subcategory === 'Wall Cabinets'){
           doc.toeKickHeight = 0;
-          console.log("Toe Kick Height", doc.toeKickHeight);
           doc.toeKickDepth = 0;
-          console.log("Toe Kick Depth", doc.toeKickDepth);
         }
 
         
@@ -196,10 +194,6 @@ AutoForm.hooks({
           doc.drawerBoxBottomMaterial = lastProduct.drawerBoxBottomMaterial;
           doc.ffMaterial = lastProduct.ffMaterial;
           doc.shelfMaterial = lastProduct.shelfMaterial;
-          
-          doc.runners = lastProduct.runners;
-          doc.hinges = lastProduct.hinges;
-          //doc.pulls = Session.get('pulls');
         }
        
         

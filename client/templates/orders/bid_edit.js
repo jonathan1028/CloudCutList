@@ -1,49 +1,10 @@
-Template.orderSubmit.onCreated(function() {
-  Session.set('orderSubmitErrors', {});
-});
-
-Template.orderSubmit.helpers({
-  errorMessage: function(field) {
-    return Session.get('orderSubmitErrors')[field];
-  },
-  errorClass: function (field) {
-    return !!Session.get('orderSubmitErrors')[field] ? 'has-error' : '';
-  },
-  cabinetStyle: function(){
-    x = [
-          {
-            name: 'Shaker', 
-            label: 'Shaker', 
-          },
-          {
-            name: 'FlushFace', 
-            label:'Flush Face', 
-          },
-          
-          
-        ]
-   
-    return x;
-  },
-  styles: function () {
-    
-    return [
-      {
-        options: [
-          {label: "2014", value: 2014},
-          {label: "2013", value: 2013},
-          {label: "2012", value: 2012}
-        ]
-      },
-    
-    ];
-  },
-  optionsHelper: function () {
+Template.bidEdit.helpers({
+   optionsHelper: function () {
    return Customers.find().map(function (c){
       return {label: c.name, value: c._id};
     });
   },
-  //-------------------- Style ----------------------------------------------------------
+   //-------------------- Style ----------------------------------------------------------
   doorStyleOptions: function(){
     return Components.find({template: 2}).map(function (c){
       return {label: c.name, value: c._id};
@@ -110,30 +71,36 @@ Template.orderSubmit.helpers({
       return {label: c.name, value: c._id};
     });
   },
-
 });
-
-Template.orderSubmit.rendered=function() {
-  $('#my-datepicker').datepicker();
-}
-
-/*AutoForm.hooks({
-  orderSubmit: {
-    before: {
-      insert: function(doc) {
-        doc.status = "Active";
-        this.result(doc);
-      }
-    }
-  }
-});*/
 
 AutoForm.hooks({
-  orderSubmit: {
-    
+  bidEdit: {
     onSuccess: function(update, result) {
-      Router.go('orderPage', {_id: this.docId});
+      Router.go('bidPage', {_id: this.docId});
     }
   }
 });
 
+Template.bidEdit.events({ 
+  'click .deleteOrder': function(e) { e.preventDefault();
+
+      if (confirm("Delete this order and all of its products?")) { 
+        var currentorderId = this._id;
+        
+        Products.find({orderId: this._id}).forEach(function(p) {
+          Products.remove(p._id);
+        });
+
+        Components.find({orderId: this._id}).forEach(function(c) {
+          Components.remove(c._id);
+        });
+
+        Parts.find({orderId: this._id}).forEach(function(part) {
+          Parts.remove(part._id);
+        });
+        
+        Orders.remove(currentorderId); 
+        Router.go('ordersList');
+      } 
+    }
+});

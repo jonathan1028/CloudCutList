@@ -84,7 +84,7 @@ cloneProduct = function(productId, templateId){
       {
         partMaterial = order.shelfMaterial;
       } 
-      if(p.materialType === "Runner")
+     /* if(p.materialType === "Runner")
       {
         partMaterial = order.runners;
       } 
@@ -95,7 +95,7 @@ cloneProduct = function(productId, templateId){
       if(p.materialType === "Pull")
       {
         partMaterial = order.pulls;
-      } 
+      } */
 
       var newPart = {
           orderId: orderId,

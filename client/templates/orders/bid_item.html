@@ -1,7 +1,7 @@
 <template name="bidItem">
   <div class="list">
     <div class="list-item">
-      <h3><a href="{{pathFor 'orderPage'}}">{{jobName}}</a><span></span></h3>
+      <h3><a href="{{pathFor 'bidPage'}}">{{jobName}}</a><span></span></h3>
       <p>Customer: {{customerName}}</p>
       <p>Quantity: {{productCount}} Cabinets</p>
       <p>Status: {{status}}</p>
@@ -12,7 +12,7 @@
     
     <div class="btn-group float-right">
       <a href="{{pathFor 'estimatePage'}}" class="btn btn-default">Estimate</a>
-      <a href="{{pathFor 'orderEdit'}}" class="btn btn-default">Edit</a>
+      <a href="{{pathFor 'bidEdit'}}" class="btn btn-default">Edit</a>
       <a href="#" class="btn btn-warning archive">Archive</a>
       <a href="#" class="btn btn-success approve">Approve</a>
     </div>

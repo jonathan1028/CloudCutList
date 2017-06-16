@@ -30,9 +30,9 @@ cloneDoor = function(productId, templateId){
       {
         partMaterial = order.doorPanelMaterial;
       }
-      else if(p.materialType === 'Hinge'){
+      /*else if(p.materialType === 'Hinge'){
         partMaterial = order.hinges;
-      }
+      }*/
       else
       {
         partMaterial = 'Error assigning inputCostId';

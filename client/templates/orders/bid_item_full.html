@@ -1,0 +1,41 @@
+<template name="bidItemFull">
+  <div class="list">
+    <div class="list-item">
+      <h3><a href="{{pathFor 'orderPage'}}">{{jobName}}</a><span></span></h3>
+      <p>By: {{customerName}}</p>
+      <p>{{productCount}} Cabinets </p>
+      <p>Build Time: {{buildTime}}</p>
+      <strong><p>Due Date: {{formatDate dueDate}}</p></strong>
+      <br>
+      <!--  <p>Progress: 0% Complete</p> -->
+
+      <strong>Style</strong>
+      <p>Door Style: {{doorStyleName}} </p> 
+      <p>Drawer Style: {{drawerFaceStyleName}} </p>
+      <br>
+
+      <strong>Finish</strong>
+      <p>Finish Type: {{finishType}} </p> 
+      <p>Color: {{finishColor}} </p>
+      <br>
+
+      <strong>Build</strong>
+      <p>Doors: {{doorPanelMaterialName}} </p> 
+      <p>Drawer Faces: {{drawerFacePanelMaterialName}} </p>
+      <p>Cases: {{caseMaterialName}} </p>
+      <p>Drawer Boxes: {{drawerBoxSideMaterialName}} </p>
+      <br>
+
+      <strong>Costs</strong>
+      <p>Material: {{materialCost}}</p>
+      <p>Labor: {{laborCost}}</p>
+      <p><strong>Total: {{totalCost}}</strong></p>
+    </div>
+    
+    <div class="btn-group float-right">
+      <a href="{{pathFor 'estimatePage'}}" class="btn btn-default">Estimate</a>
+      <a href="{{pathFor 'bidEdit'}}" class="btn btn-default">Edit</a>
+    </div>
+
+  </div>
+</template>

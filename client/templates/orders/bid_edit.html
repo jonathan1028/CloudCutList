@@ -1,8 +1,9 @@
-<template name="orderEdit">
-  {{#autoForm collection="Orders" doc=this id="orderEdit" type="update" class="comment-form form"}}
+<template name="bidEdit">
+  {{#autoForm collection="Orders" doc=this id="bidEdit" type="update" class="comment-form form"}}
     <legend>Edit Order</legend>
     {{> afFormGroup name='customerId' label='Customer' type="select" options=optionsHelper template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
     {{> afQuickField name='jobName'}}
+    {{> afQuickField name='status'}}
     {{> afQuickField name='dueDate'}}
 
      <h4>Style</h4>

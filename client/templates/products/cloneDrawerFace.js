@@ -9,13 +9,10 @@ cloneDrawerFace = function(productId, templateId){
     
     //Var must be named "cpmponent" in order to work with supplied formulas.
     var component = c;
-    console.log(c.name);
 
     //Finds all parts associated with the Door Style Template
     Parts.find({componentId: order.drawerFaceStyle}).forEach(function(p) {
       
-      console.log("Entered CloneDrawer Parts");
-
       var partWidth = eval(p.widthFormula);
       var partLength = eval(p.lengthFormula);
       var partDepth = eval(p.depthFormula); 
@@ -30,10 +27,10 @@ cloneDrawerFace = function(productId, templateId){
       {
         partMaterial = order.drawerFacePanelMaterial;
       }
-      else if(p.materialType === 'Runner'){
+      /*else if(p.materialType === 'Runner'){
       //Sets componement material to inherit from product
         partMaterial = order.runners;
-      }
+      }*/
       else
       {
         partMaterial = 'Error assigning inputCostId';
