@@ -1,0 +1,15 @@
+<template name="bidsList">
+  
+  <div>
+    <h3>Active Bids</h3>
+    
+    <div class="btn-group">
+       <a href="{{pathFor 'orderSubmit'}}" class="btn btn-default btn-small">New Bid</a>
+       <a href="{{pathFor 'bidsListArchived'}}" class="discuss btn btn-default">Archived Bids</a>
+    </div>
+
+    {{#each orders}}
+      {{> bidItem}}
+    {{/each}}
+  </div>
+</template>

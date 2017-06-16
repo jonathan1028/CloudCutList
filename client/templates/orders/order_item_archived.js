@@ -11,7 +11,7 @@ Template.orderItemArchived.helpers({
 Template.orderItemArchived.events({ 
   'click .makeActive': function(e) { e.preventDefault();
         Orders.update(this._id, {
-          $set: {status: "Active"}
+          $set: {status: "Won"}
         });
         Router.go('ordersList'); 
     }

@@ -150,6 +150,7 @@ Template.estimatePage.helpers({
     return totalCost;
   },
   customerCost: function() {
+    //Push to database
     var markUp = Session.get("markUp");
     var totalMaterialCost = 0; 
     var totalLaborCost = 0; 

@@ -1,0 +1,14 @@
+<template name="bidsListArchived">
+  
+  <div>
+    <h3>Archived Bids</h3>
+    
+    <div class="btn-group">
+       <a href="{{pathFor 'bidsList'}}" class="discuss btn btn-default">Active Bids</a>
+    </div>
+
+    {{#each orders}}
+      {{> bidItem}}
+    {{/each}}
+  </div>
+</template>
