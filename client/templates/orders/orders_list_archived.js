@@ -1,5 +1,5 @@
 Template.ordersListArchived.helpers({
   orders: function() {
-    return Orders.find({status: {$not: "Active"}}, {sort: {jobName: 1}});
+    return Orders.find({status: {$not: "Archive"}}, {sort: {jobName: 1}});
   }
 });
