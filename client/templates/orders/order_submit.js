@@ -25,17 +25,50 @@ Template.orderSubmit.helpers({
    
     return x;
   },
-  styles: function () {
-    
+  roughLumberAndSheetGoods: function () {
+    sheetGoods = [];
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+    roughLumber = [];
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+
     return [
       {
-        options: [
-          {label: "2014", value: 2014},
-          {label: "2013", value: 2013},
-          {label: "2012", value: 2012}
-        ]
+        optgroup: "Sheet Goods",
+        options: sheetGoods,
       },
-    
+      {
+        optgroup: "Rough Lumber",
+        options: roughLumber,
+      }
+    ];
+  },
+  sheetGoods: function () {
+    sheetGoods = [];
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+    return [
+      {
+        optgroup: "Sheet Goods",
+        options: sheetGoods,
+      },
+    ];
+  },
+  roughLumber: function () {
+    roughLumber = [];
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+
+    return [
+      {
+        optgroup: "Rough Lumber",
+        options: roughLumber,
+      }
     ];
   },
   optionsHelper: function () {
@@ -55,63 +88,64 @@ Template.orderSubmit.helpers({
     });
   },
   //-------------------- Materials ----------------------------------------------------------
-  caseMaterialOptions: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
+  
   doorFrameMaterialOptions: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   doorPanelMaterialOptions: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   drawerFaceFrameMaterialOptions: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   drawerFacePanelMaterialOptions: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
+    return InputCosts.find({$or: [{type: 'Sheet Good'}, {type: 'Rough Lumber'}]}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   drawerBoxSideMaterialOptions: function(){
-    return InputCosts.find({type: 'Drawer Box Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   drawerBoxBottomMaterialOptions: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   ffMaterialOptions: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+  },
+  caseMaterialOptions: function(){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   shelfMaterialOptions: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
    toeKickMaterialOptions: function(){
-    return InputCosts.find({type: 'Toe Kick Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   endPanelMaterialOptions: function(){
-    return InputCosts.find({type: 'End Panel Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },
   crownMaterialOptions: function(){
-    return InputCosts.find({type: 'Crown Material'}).map(function (c){
+    return InputCosts.find({type: 'Sheet Good'}).map(function (c){
       return {label: c.name, value: c._id};
     });
   },

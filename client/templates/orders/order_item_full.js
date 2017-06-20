@@ -6,8 +6,7 @@ Template.orderItemFull.helpers({
     var totalCost = 0; 
     var partCost = 0;
 
-    Parts.find({orderId: this._id}).forEach(function(part) {
-     
+    Parts.find({orderId: this._id}).forEach(function(part) {   
       var inputCostItem = InputCosts.findOne({_id: part.inputCostId});
       if(inputCostItem.unit === 'BF')
         partCost = (inputCostItem.cost * part.width * part.length *part.depth)/144 * 1.3;

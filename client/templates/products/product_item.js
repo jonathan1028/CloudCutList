@@ -16,12 +16,11 @@ Template.productItem.helpers({
      
       var inputCostItem = InputCosts.findOne({_id: part.inputCostId});
       if(inputCostItem.unit === 'BF')
-        partCost = (inputCostItem.cost * part.width * part.length *part.depth)/144 * 1.3;
+        partCost = (inputCostItem.cost * part.width * part.length * part.depth)/144 * 1.3;
       if(inputCostItem.unit === 'SF')
         partCost = (inputCostItem.cost * part.width * part.length)/144 * 1.3;
       if(inputCostItem.unit === 'Ea')
         partCost = (inputCostItem.cost * 1);
-      //partCost = (inputCostItem.cost * part.height * part.length)/144;
       
       totalCost = totalCost + partCost;
     });
