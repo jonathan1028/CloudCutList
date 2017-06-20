@@ -8,4 +8,7 @@ Template.productsList.helpers({
   tallCabinets: function() {
     return Products.find({template: 1, subcategory: 'Tall Cabinets'});
   },
+  trim: function() {
+    return Products.find({template: 1, subcategory: 'Trim'});
+  },
 });

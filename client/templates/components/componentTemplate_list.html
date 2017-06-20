@@ -65,6 +65,18 @@
       </div>
     {{/each}}
 
+    <h3>Trim</h3>
+    {{#each trim}}
+      <div class="list">
+        <div class="list-item">
+          <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}} </a></h3>
+        </div>
+      
+      </div>
+    {{/each}}
+
+
+
     <h3>Door Style Builds</h3>
     <h3><a href="{{pathFor 'componentDoorTemplateSubmit'}}" class="discuss btn btn-default">New Door Style Build</a></h3>
     {{#each doorComponents}}
@@ -87,6 +99,8 @@
       
       </div>
     {{/each}}
+
+
 
   </div>
 </template>

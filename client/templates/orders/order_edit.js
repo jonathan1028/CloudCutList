@@ -4,6 +4,22 @@ Template.orderEdit.helpers({
       return {label: c.name, value: c._id};
     });
   },
+  statusOptions: function () {
+    
+    return [
+      
+        
+          {label: "1 - Opportunity", value: "1 - Opportunity"},
+          {label: "2 - Plans Received", value: "2 - Plans Received"},
+          {label: "3 - Design Submitted", value: "3 - Design Submitted"},
+          {label: "4 - Design Approved", value: "4 - Design Approved"},
+          {label: "5 - Bid Submitted", value: "5 - Bid Submitted"},
+          {label: "Won", value: "Won"},
+        
+      
+    
+    ];
+  },
    //-------------------- Style ----------------------------------------------------------
   doorStyleOptions: function(){
     return Components.find({template: 2}).map(function (c){

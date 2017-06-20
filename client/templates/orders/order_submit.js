@@ -100,6 +100,21 @@ Template.orderSubmit.helpers({
       return {label: c.name, value: c._id};
     });
   },
+   toeKickMaterialOptions: function(){
+    return InputCosts.find({type: 'Toe Kick Material'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+  },
+  endPanelMaterialOptions: function(){
+    return InputCosts.find({type: 'End Panel Material'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+  },
+  crownMaterialOptions: function(){
+    return InputCosts.find({type: 'Crown Material'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+  },
   runnerOptions: function(){
     return InputCosts.find({type: 'Drawer Runner'}).map(function (c){
       return {label: c.name, value: c._id};
@@ -117,16 +132,16 @@ Template.orderSubmit.rendered=function() {
   $('#my-datepicker').datepicker();
 }
 
-/*AutoForm.hooks({
+AutoForm.hooks({
   orderSubmit: {
     before: {
       insert: function(doc) {
-        doc.status = "Active";
+        doc.status = "1 - Opportunity";
         this.result(doc);
       }
     }
   }
-});*/
+});
 
 AutoForm.hooks({
   orderSubmit: {

@@ -3,6 +3,7 @@
     <legend>Edit Order</legend>
     {{> afFormGroup name='customerId' label='Customer' type="select" options=optionsHelper template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}}
     {{> afQuickField name='jobName'}}
+    {{> afQuickField name='status' type="select" options=statusOptions}}
     {{> afQuickField name='dueDate'}}
 
      <h4>Style</h4>

@@ -18,7 +18,7 @@ Template.productSubmit.helpers({
     return Products.find({subcategory: 'Tall Cabinets', template: 1});
   },
   trim: function(){
-    return Products.find({type: 'Trim'});
+    return Products.find({subcategory: 'Trim', template: 1});
   },
   defaultHeight: function(){
     if(Session.get('currentModel')){
@@ -44,7 +44,20 @@ Template.productSubmit.helpers({
     if(Session.get('currentModel')){
       var model = Session.get('currentModel');
       var subcategory = Products.findOne({template: 1, model: model}).subcategory;
-      if(subcategory === 'Wall Cabinets'){
+      if(subcategory === 'Wall Cabinets' || subcategory === 'Trim'){
+        return false;
+      }
+    }
+    
+    return true;
+
+  },
+  notTrim: function(){
+
+    if(Session.get('currentModel')){
+      var model = Session.get('currentModel');
+      var subcategory = Products.findOne({template: 1, model: model}).subcategory;
+      if(subcategory === 'Trim'){
         return false;
       }
     }
@@ -172,11 +185,11 @@ AutoForm.hooks({
         if(Session.get('copySettingsState') === true){
           var lastProduct = Products.findOne({orderId: orderId}, {sort: {submitted: -1, limit: 1}});
 
-          doc.finishType = lastProduct.finishType;
-          doc.finishColor = lastProduct.finishColor;
+          //doc.finishType = lastProduct.finishType;
+          //doc.finishColor = lastProduct.finishColor;
           
-          doc.doorStyle = lastProduct.doorStyle;
-          doc.drawerFaceStyle = lastProduct.drawerFaceStyle;
+          //doc.doorStyle = lastProduct.doorStyle;
+          //doc.drawerFaceStyle = lastProduct.drawerFaceStyle;
           doc.topOffset = lastProduct.topOffset;
           doc.bottomOffset = lastProduct.bottomOffset;
           doc.leftOffset = lastProduct.leftOffset;
@@ -184,16 +197,16 @@ AutoForm.hooks({
           doc.centerOffset = lastProduct.centerOffset;
           doc.drawerOffset = lastProduct.drawerOffset;
 
-          doc.caseMaterial = lastProduct.caseMaterial;
-          doc.caseBackMaterial = lastProduct.caseBackMaterial;
-          doc.doorFrameMaterial = lastProduct.doorFrameMaterial;
-          doc.doorPanelMaterial = lastProduct.doorPanelMaterial;
-          doc.drawerFaceFrameMaterial = lastProduct.drawerFaceFrameMaterial;
-          doc.drawerFacePanelMaterial = lastProduct.drawerFacePanelMaterial;
-          doc.drawerBoxSideMaterial = lastProduct.drawerBoxSideMaterial;
-          doc.drawerBoxBottomMaterial = lastProduct.drawerBoxBottomMaterial;
-          doc.ffMaterial = lastProduct.ffMaterial;
-          doc.shelfMaterial = lastProduct.shelfMaterial;
+          //doc.caseMaterial = lastProduct.caseMaterial;
+          //doc.caseBackMaterial = lastProduct.caseBackMaterial;
+          //doc.doorFrameMaterial = lastProduct.doorFrameMaterial;
+          //doc.doorPanelMaterial = lastProduct.doorPanelMaterial;
+          //doc.drawerFaceFrameMaterial = lastProduct.drawerFaceFrameMaterial;
+          //doc.drawerFacePanelMaterial = lastProduct.drawerFacePanelMaterial;
+          //doc.drawerBoxSideMaterial = lastProduct.drawerBoxSideMaterial;
+          //doc.drawerBoxBottomMaterial = lastProduct.drawerBoxBottomMaterial;
+          //doc.ffMaterial = lastProduct.ffMaterial;
+          //doc.shelfMaterial = lastProduct.shelfMaterial;
         }
        
         

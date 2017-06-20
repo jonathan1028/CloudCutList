@@ -23,6 +23,10 @@ Template.componentTemplatesList.helpers({
     //return Components.find({template: 1, type: {$ne: 'Door'}, type: {$ne: 'Drawer Face'}});
     return Components.find({template: 1, type: 'Shelf' });
   },
+  trim: function() {
+    //return Components.find({template: 1, type: {$ne: 'Door'}, type: {$ne: 'Drawer Face'}});
+    return Components.find({template: 1, type: 'Trim' });
+  },
   doorComponents: function() {
     return Components.find({template: 2});
   },

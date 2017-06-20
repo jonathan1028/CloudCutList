@@ -27,6 +27,12 @@
               {{/each}}
             </optgroup>
 
+            <optgroup label="Trim">
+              {{#each trim}}
+                <option value={{model}}> {{name}}</option>
+              {{/each}}
+            </optgroup>
+
         </select>
       </div>
       <br>
@@ -46,52 +52,25 @@
         {{> afQuickField name='toeKickDepth' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
       {{/if}}
 
-      
-      {{#if multipleProducts this.orderId}}
-        <input type="checkbox" name="copySettings" checked="checked"> Copy settings from previous product.<br>
-      {{/if}}
-        {{#if displaySettings}}
-
-          <!-- <h4>Finish</h4> -->
-          <!-- {{> afQuickField name='finishType' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afQuickField name='finishColor' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-
-          <h4>Doors & Drawers</h4>  
-          <!-- {{> afFormGroup name='doorStyle' type="select" options=doorOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-          <!-- {{> afFormGroup name='drawerFaceStyle' options=drawerFaceOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-          {{> afQuickField name='leftOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afQuickField name='rightOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-          {{> afQuickField name='topOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afQuickField name='bottomOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afQuickField name='drawerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-          {{> afQuickField name='centerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-          
-          <!-- <h4>Materials</h4> -->
-          <!-- {{> afFormGroup name='caseMaterial' label='Case' type="select" options=caseMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-          <!-- {{> afFormGroup name='doorFrameMaterial' label='Door Frame' type="select" options=doorFrameMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afFormGroup name='doorPanelMaterial' label='Door Panel' type="select" options=doorPanelMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-          
-        <!--   {{> afFormGroup name='drawerFaceFrameMaterial' label='Drawer Face Frame' type="select" options=drawerFaceFrameMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afFormGroup name='drawerFacePanelMaterial' label='Drawer Face Panel' type="select" options=drawerFacePanelMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afFormGroup name='drawerBoxSideMaterial' label='Drawer Box Sides/Ends' type="select" options=drawerBoxSideMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afFormGroup name='drawerBoxBottomMaterial' label='Drawer Box Bottom' type="select" options=drawerBoxBottomMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-
-          <!-- {{> afFormGroup name='ffMaterial' label='Face Frame' type="select" options=ffMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-
-          {{> afFormGroup name='shelfMaterial' label='Shelves' type="select" options=shelfMaterialOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          
-          
-          
-
-          <h4>Hardware</h4>      
-          {{> afFormGroup name='runners' type="select" options=runnersOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-          {{> afFormGroup name='hinges' type="select" options=hingesOptionsHelper template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} -->
-          
-      
-        
+      {{#if notTrim}}
+        {{#if multipleProducts this.orderId}}
+          <input type="checkbox" name="copySettings" checked="checked"> Copy settings from previous product.<br>
         {{/if}}
-      <!-- <h4>Other</h4>
-      {{> afQuickField name='notes' template="bootstrap3-horizontal" label-class="col-md-2" input-col-class="col-md-10"}} -->
+          {{#if displaySettings}}
+            <h4>Doors & Drawers</h4>  
+            {{> afQuickField name='leftOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
+            {{> afQuickField name='rightOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+            {{> afQuickField name='topOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
+            {{> afQuickField name='bottomOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
+            {{> afQuickField name='drawerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+            {{> afQuickField name='centerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+            
+           
+            
+        
+          
+          {{/if}}
+      {{/if}}
       
     </fieldset>
     <button type="submit" class="btn btn-primary">Submit</button>
