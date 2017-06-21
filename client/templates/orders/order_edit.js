@@ -32,6 +32,52 @@ Template.orderEdit.helpers({
     });
   },
   //-------------------- Materials ----------------------------------------------------------
+  roughLumberAndSheetGoods: function () {
+    sheetGoods = [];
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+    roughLumber = [];
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+
+    return [
+      {
+        optgroup: "Sheet Goods",
+        options: sheetGoods,
+      },
+      {
+        optgroup: "Rough Lumber",
+        options: roughLumber,
+      }
+    ];
+  },
+  sheetGoods: function () {
+    sheetGoods = [];
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+    return [
+      {
+        optgroup: "Sheet Goods",
+        options: sheetGoods,
+      },
+    ];
+  },
+  roughLumber: function () {
+    roughLumber = [];
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+      return {label: c.name, value: c._id};
+    });
+
+    return [
+      {
+        optgroup: "Rough Lumber",
+        options: roughLumber,
+      }
+    ];
+  },
   caseMaterialOptions: function(){
     return InputCosts.find({type: 'Case Material'}).map(function (c){
       return {label: c.name, value: c._id};

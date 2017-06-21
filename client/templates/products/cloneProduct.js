@@ -84,6 +84,18 @@ cloneProduct = function(productId, templateId){
       {
         partMaterial = order.shelfMaterial;
       } 
+      if(p.materialType === "End Panel")
+      {
+        partMaterial = order.endPanelMaterial;
+      } 
+      if(p.materialType === "Toe Kick")
+      {
+        partMaterial = order.toeKickMaterial;
+      } 
+      if(p.materialType === "Crown")
+      {
+        partMaterial = order.crownMaterial;
+      } 
      /* if(p.materialType === "Runner")
       {
         partMaterial = order.runners;
