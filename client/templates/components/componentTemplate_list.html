@@ -4,6 +4,16 @@
     <h2>Component Templates</h2>
     <h3><a href="{{pathFor 'componentTemplateSubmit'}}" class="discuss btn btn-default">New Component Template</a></h3>
     
+    <div class="form-inline">
+        <select name="productCategory" id="productCategory" class="form-control">
+            <option disabled="disabled" selected="selected">Select Product Category</option> 
+
+              {{#each productCategories}}
+                <option value={{value}}> {{label}}</option>
+              {{/each}}
+
+        </select>
+    </div>
 
     <h3>Cases</h3>
     {{#each cases}}

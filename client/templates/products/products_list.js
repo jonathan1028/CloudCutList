@@ -1,3 +1,7 @@
+Template.productsList.onCreated(function() {
+  Session.set("currentCategory", null);
+});
+
 Template.productsList.helpers({
   category: function() {
     return [

@@ -12,17 +12,17 @@ Template.productSubmit.helpers({
     console.log(orderId);
     var orderCategory = Orders.findOne({_id: orderId}).category;
     console.log(orderCategory);
-    return Products.find({$and: [{category: orderCategory},{subcategory: 'Base Cabinets'}]}, {template: 1});
+    return Products.find({category: orderCategory, subcategory: 'Base Cabinets', template: 1});
   },
   wallCabinets: function(orderId){
     var orderCategory = Orders.findOne({_id: orderId}).category;
     console.log(orderCategory);
-    return Products.find({$and: [{category: orderCategory},{subcategory: 'Wall Cabinets'}]}, {template: 1});
+    return Products.find({category: orderCategory, subcategory: 'Wall Cabinets', template: 1});
   },
   tallCabinets: function(orderId){
     var orderCategory = Orders.findOne({_id: orderId}).category;
     console.log(orderCategory);
-    return Products.find({$and: [{category: orderCategory},{subcategory: 'Tall Cabinets'}]}, {template: 1});
+    return Products.find({category: orderCategory, subcategory: 'Tall Cabinets', template: 1});
   },
   trim: function(){
     return Products.find({subcategory: 'Trim', template: 1});

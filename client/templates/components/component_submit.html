@@ -2,8 +2,11 @@
   {{#autoForm collection="Components" id="componentSubmit" type="insert" productId=productId class="comment-form form"}}
     <fieldset>
       <legend>Add Component</legend>
-      
-      {{> afFormGroup name='name' type="select" options=optionsHelper}}
+     
+      <!-- Note: with statement allows the ability to pass parameter to optionsHelper -->
+      {{#with optionsHelper productId}}
+		{{> afFormGroup name="name" type="select" options=this}}
+	  {{/with}}
       
     </fieldset>
     <button type="submit" class="btn btn-primary">Insert</button>

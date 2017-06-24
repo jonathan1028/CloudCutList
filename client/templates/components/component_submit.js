@@ -3,14 +3,10 @@ Template.componentSubmit.onCreated(function() {
 });
 
 Template.componentSubmit.helpers({
-  optionsHelper: function(model) {
-    /*var options = [
-      {label: "2013", value: 2013},
-      {label: "2014", value: 2014},
-      {label: "2015", value: 2015}
-    ]*/
-    //return options; 
-    return Components.find({template: 1}, {sort: {type: 1}}).map(function (c){
+  optionsHelper: function(productId) {
+    var productCategory = Products.findOne({_id: productId}).category;
+    console.log(productCategory);
+    return Components.find({category: productCategory, template: 1}, {sort: {type: 1}}).map(function (c){
       console.log(c.name, c.template);
       return {label: c.name, value: c._id};
     });

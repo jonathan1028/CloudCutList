@@ -18,6 +18,8 @@ AutoForm.hooks({
         doc.depthFormula = 0;
         doc.type = 'Door';
 
+        console.log(doc.category);
+
         //asynchronous submission
         this.result(doc);
       }
