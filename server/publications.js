@@ -26,4 +26,8 @@ Meteor.publish('components', function() {
   return Components.find();
 });
 
+Meteor.publish('processes', function() {
+  return Processes.find();
+});
+
 

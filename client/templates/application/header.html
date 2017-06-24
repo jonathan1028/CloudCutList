@@ -20,6 +20,9 @@
         {{#if currentUser}}<li><a href="{{pathFor 'ordersList'}}">Orders</a></li>{{/if}}
       </ul>
       <ul class="nav navbar-nav">
+        {{#if currentUser}}<li><a href="{{pathFor 'ordersQueue'}}">Queue</a></li>{{/if}}
+      </ul>
+      <ul class="nav navbar-nav">
         {{#if currentUser}}<li><a href="{{pathFor 'inputCostsList'}}">Purchasing</a></li>{{/if}}
       </ul>
       <ul class="nav navbar-nav">
@@ -27,6 +30,9 @@
       </ul>
       <ul class="nav navbar-nav">
         {{#if currentUser}}<li><a href="{{pathFor 'componentTemplatesList'}}">Components</a></li>{{/if}}
+      </ul>
+      <ul class="nav navbar-nav">
+        {{#if currentUser}}<li><a href="{{pathFor 'processesList'}}">Processes</a></li>{{/if}}
       </ul>
       <ul class="nav navbar-nav">
         {{#if currentUser}}<li><a href="#">Settings</a></li>{{/if}}

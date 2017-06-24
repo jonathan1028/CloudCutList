@@ -1,0 +1,16 @@
+<template name="processSubmit">
+  {{#autoForm collection="Processes" id="processSubmit" type="insert" template="bootstrap3-inline" class="comment-form form"}}
+    <fieldset>
+      <legend>New Process</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='time'}}
+     
+      
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+
+</template>
+
+    
+    

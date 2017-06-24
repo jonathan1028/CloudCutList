@@ -1,0 +1,36 @@
+<template name="processesList">
+  
+  <div class="restaurants">
+    <h3>Processes List</h3>
+    <h3><a href="{{pathFor 'processSubmit'}}" class="discuss btn btn-default">New Process</a></h3>
+   
+    
+    
+    <div class="table">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="text-right">Time</th>
+          
+          </tr>
+        </thead>
+		  <tbody>
+		    {{#each processes}}
+		      <tr class="tableRow">
+		      	 
+		        <td class="text-left">{{name}}</td>
+		        <td class="text-right">{{time}}</td>
+		     
+		        
+		      </tr>
+		    {{/each}}
+		    
+	
+		    
+		  </tbody>
+      </table>
+    </div>
+  </div>
+</template>

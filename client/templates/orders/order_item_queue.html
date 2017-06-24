@@ -1,0 +1,25 @@
+<template name="orderItemQueue">
+  <div class="list">
+    <div class="list-item">
+      <h3><a href="{{pathFor 'orderPage'}}">{{jobName}}</a><span></span></h3>
+      <p>Customer: {{customerName}}</p>
+      <p>Quantity: {{productCount}} Cabinets</p>
+      <p>Progress: 0% Complete</p>
+
+      <strong><p>Due Date: {{formatDate dueDate}}</p></strong>
+
+      <strong><p>Processes: </p></strong>
+      {{#each processes}}
+          <div class="list-item">
+            {{name}}
+
+          </div>
+          <br>
+      {{/each}}
+      
+    </div>
+    
+ 
+
+  </div>
+</template>

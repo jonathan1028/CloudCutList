@@ -51,7 +51,7 @@ Migrations.add({
   }
 });
 
-Meteor.startup(() => {
+/*Meteor.startup(() => {
   Migrations.migrateTo('2');
   console.log("Migrations Run");
-});
+});*/

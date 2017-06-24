@@ -1,0 +1,10 @@
+<template name="ordersQueue">
+  
+  <div>
+    <h3>Order Queue</h3>
+
+    {{#each orders}}
+      {{> orderItemQueue}}
+    {{/each}}
+  </div>
+</template>

@@ -1,0 +1,10 @@
+<template name="processEdit">
+  {{#autoForm collection="Processes" doc=this id="processEdit" type="update" class="comment-form form"}}
+    <legend>Edit Customer</legend>
+    {{> afQuickField name="name"}}
+    {{> afQuickField name="time"}}
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <hr/>
+  {{/autoForm}}
+</template>
