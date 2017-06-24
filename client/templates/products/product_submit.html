@@ -10,19 +10,19 @@
             <option disabled="disabled" selected="selected">Select Cabinet Type</option> 
             
             <optgroup label="Base Cabinets">
-              {{#each baseCabinets}}
+              {{#each baseCabinets this.orderId}}
                 <option value={{model}}> {{name}}</option>
               {{/each}}
             </optgroup> 
 
             <optgroup label="Wall Cabinets">
-              {{#each wallCabinets}}
+              {{#each wallCabinets this.orderId}}
                 <option value={{model}}> {{name}}</option>
               {{/each}}
             </optgroup>
 
             <optgroup label="Tall Cabinets">
-              {{#each tallCabinets}}
+              {{#each tallCabinets this.orderId}}
                 <option value={{model}}> {{name}}</option>
               {{/each}}
             </optgroup>

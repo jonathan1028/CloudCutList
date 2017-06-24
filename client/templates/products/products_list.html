@@ -3,6 +3,30 @@
   <div>
     <h3>Product Templates</h3>
     <h3><a href="{{pathFor 'productTemplateSubmit'}}" class="discuss btn btn-default">New Product Template</a></h3>
+    
+    <!-- {{#autoForm collection="Products" id="productSubmit" type="insert" orderId=orderId template="bootstrap3-horizontal"  }}
+      <fieldset>
+        {{> afQuickField name='category' template="bootstrap3-horizontal"}} 
+      
+      
+      
+      </fieldset>
+      
+    {{/autoForm}} -->
+
+    <div class="form-inline">
+        <select name="category" id="category" class="form-control">
+            <option disabled="disabled" selected="selected">Select Product Category</option> 
+
+              {{#each category}}
+                <option value={{value}}> {{label}}</option>
+              {{/each}}
+
+        </select>
+    </div>
+
+
+
     <h4>Base Cabinets</h4>
     {{#each baseCabinets}}
       <div class="list">
