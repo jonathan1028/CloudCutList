@@ -1,7 +1,7 @@
 <template name="componentTemplateItem">
 
-    <div class="restaurant">
-      <div class="restaurant-content">
+    <div class="list">
+      <div class="list-item">
         <h3><a href="{{pathFor 'componentTemplatePage'}}">{{name}}</a><span></span></h3>
           
           <strong>
@@ -10,12 +10,20 @@
             <p> Height Formula: {{heightFormula}}</p>
             <p> Depth Formula: {{depthFormula}}</p>
             <p> Build Time: {{buildTime}}</p>
+            <p> Processes:</p>
           </strong>
+          {{#each this.processes}}
+              <div class="list-item">
+              {{grabName this}}
+
+              </div>
+              <br>
+          {{/each}}
      
       </div>
       
-      <a class="discuss btn btn-danger deleteComponentTemplate" href="#">Delete</a>
-      <a href="{{pathFor 'componentTemplateEdit'}}" class="discuss btn btn-default">Edit</a>
+      <a class="float-right btn btn-danger deleteComponentTemplate" href="#">Delete</a>
+      <a href="{{pathFor 'componentTemplateEdit'}}" class="float-right btn btn-default">Edit</a>
 
     </div>
 

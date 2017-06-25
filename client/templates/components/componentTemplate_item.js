@@ -1,6 +1,8 @@
 Template.componentTemplateItem.helpers({
-  
-
+	grabName: (processId) => {
+		return Processes.findOne({_id: processId}).name;
+	},  
+    
 });
 
 Template.componentTemplateItem.events({ 
