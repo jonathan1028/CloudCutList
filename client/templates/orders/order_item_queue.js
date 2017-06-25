@@ -1,88 +1,59 @@
 Template.orderItemQueue.helpers({
- processes: function() {
-    return Processes.find();
+  processesList: function() {
+    var processSet = [];
+    var list = [];
+    var y = 0;
+    
+    //Finds all processes for the order
+    Components.find({orderId: this._id}).forEach(function(i) {
+     
+      //The processes specific to the current Component
+      processSet = i.processes;
+      
+      if(processSet){
+        //iterates through current Component's list of processes
+        processSet.forEach(function(i){
+          
+          //if process is unique add it to the list array
+          if(!list.find( function( ele ) { return ele.id === i;} ) )
+          {
+            list.push({id: i, count: 1});
+          }
+          //if process has already been added to the list, increase it's count
+          else
+          {
+            x = list.find( function( ele ) { return ele.id === i;});
+            y = x.count;
+            y++;
+            x.count = y;
+          }
+        });
+      }
+    });
+    
+    return list;
   },
- productCount: function() {
+  getName: (processId) => {
+    return Processes.findOne({_id: processId}).name;
+  },
+  getTime: (processId, count) => {
+    time = Processes.findOne({_id: processId}).time;
+    totalTime = time * count;
+    return totalTime;
+  },
+  hrsRemaining: (processesList) => {
+    totalTime = 0;
+    time = 0;
+      //time = Processes.findOne({_id: processId}).time;
+    processesList.forEach(function (i){
+      time = parseFloat(Processes.findOne({_id: i.id}).time) * i.count;
+      totalTime = totalTime + time;
+    });  
+
+    return totalTime;
+  },
+  productCount: function() {
     return Products.find({orderId: this._id}).count();
-  },
- materialCost: function() {
-    var totalCost = 0; 
-    var partCost = 0;
-
-    Parts.find({orderId: this._id}).forEach(function(part) {
-     
-      var inputCostItem = InputCosts.findOne({_id: part.inputCostId});
-      if(inputCostItem.unit === 'BF')
-        partCost = (inputCostItem.cost * part.width * part.length *part.depth)/144 * 1.3;
-      if(inputCostItem.unit === 'SF')
-        partCost = (inputCostItem.cost * part.width * part.length)/144 * 1.3;
-      if(inputCostItem.unit === 'Ea')
-        partCost = (inputCostItem.cost * 1);
-      //partCost = (inputCostItem.cost * part.height * part.length)/144;
-      
-      totalCost = totalCost + partCost;
-    });
-
-    totalCost = accounting.formatMoney(totalCost, "$", 2);
-    return totalCost;
-  },
-  laborCost: function() {
-    var totalTime = 0; 
-    if(InputCosts.findOne({type: 'Labor'}))
-      var laborRate = InputCosts.findOne({type: 'Labor'}).cost;
-    else
-      var laborRate = 25;
-    var totalCost = 0;
-
-    Components.find({orderId: this._id}).forEach(function(c) {
-
-      totalTime = totalTime + c.buildTime;
-    
-
-    });
-    
-    totalCost = totalTime * laborRate;
-    totalCost = accounting.formatMoney(totalCost, "$", 2);
-    return totalCost;
-  },
-  totalCost: function() {
-    var totalMaterialCost = 0; 
-    var totalLaborCost = 0; 
-    var totalCost = 0;
-    var partCost = 0;
-    var totalTime = 0; 
-    if(InputCosts.findOne({type: 'Labor'}))
-      var laborRate = InputCosts.findOne({type: 'Labor'}).cost;
-    else
-      var laborRate = 25;
-    var totalCost = 0;
-
-    //Calculating material cost
-    Parts.find({orderId: this._id}).forEach(function(part) {
-     
-      var inputCostItem = InputCosts.findOne({_id: part.inputCostId});
-      if(inputCostItem.unit === 'BF')
-        partCost = (inputCostItem.cost * part.width * part.length *part.depth)/144 * 1.3;
-      if(inputCostItem.unit === 'SF')
-        partCost = (inputCostItem.cost * part.width * part.length)/144 * 1.3;
-      if(inputCostItem.unit === 'Ea')
-        partCost = (inputCostItem.cost * 1);
-      //partCost = (inputCostItem.cost * part.height * part.length)/144;
-      
-      totalMaterialCost = totalMaterialCost + partCost;
-    });
-
-    //Calculating labor cost
-    Components.find({orderId: this._id}).forEach(function(c) {
-
-      totalTime = totalTime + c.buildTime;
-
-    });
-    totalLaborCost = totalTime * laborRate;
-
-    totalCost = totalMaterialCost + totalLaborCost;
-    totalCost = accounting.formatMoney(totalCost, "$", 2);
-    return totalCost;
   },
   buildTime: function() {
     var buildTime = 0;

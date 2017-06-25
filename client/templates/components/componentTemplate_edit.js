@@ -5,6 +5,19 @@ Template.componentTemplateEdit.onCreated(function() {
   //console.log(productId);
 });
 
+Template.componentTemplateEdit.helpers({
+  processesOptions: function () {
+    processes = [];
+    processes = Processes.find().map(function (c){
+      //console.log(c.name);
+      return {label: c.name, value: c._id};
+
+    });
+    return processes;
+      
+  },
+
+});
 
 
 AutoForm.hooks({

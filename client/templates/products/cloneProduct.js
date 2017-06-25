@@ -12,6 +12,8 @@ cloneProduct = function(productId, templateId){
     var height = eval(c.heightFormula);
     var depth = eval(c.depthFormula);  
     var componentName = c.name;
+    console.log(c.processes);
+    //var processes = c.processes[0];
     //componentMaterial = '';
 
     if(c.type === 'Door'){
@@ -39,7 +41,10 @@ cloneProduct = function(productId, templateId){
           heightFormula: c.heightFormula,
           depthFormula: c.depthFormula,
           buildTime: c.buildTime,
+          processes: c.processes,
     };
+
+    //console.log("List Processes:", processes);
     
     Parts.find({componentId: c._id}).forEach(function(p) {
       var component = newComponent;

@@ -4,18 +4,31 @@
       <h3><a href="{{pathFor 'orderPage'}}">{{jobName}}</a><span></span></h3>
       <p>Customer: {{customerName}}</p>
       <p>Quantity: {{productCount}} Cabinets</p>
+
       <p>Progress: 0% Complete</p>
+      <p>Hrs Remaining:    
+          {{hrsRemaining processesList}}
+      </p>
 
       <strong><p>Due Date: {{formatDate dueDate}}</p></strong>
 
       <strong><p>Processes: </p></strong>
-      {{#each processes}}
+      <!-- {{processesList}} -->
+        {{#each processesList}}
+          <div class="list-item">
+          <input type="checkbox"> {{getName this.id}}, {{getTime this.id this.count}}
+          
+
+          </div>
+          <br>
+        {{/each}}
+      <!-- {{#each processes}}
           <div class="list-item">
             {{name}}
 
           </div>
           <br>
-      {{/each}}
+      {{/each}} -->
       
     </div>
     

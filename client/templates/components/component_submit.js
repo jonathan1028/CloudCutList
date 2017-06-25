@@ -30,6 +30,7 @@ AutoForm.hooks({
         doc.heightFormula = template.heightFormula;
         doc.depthFormula = template.depthFormula;
         doc.buildTime = template.buildTime;
+        doc.processes = template.processes;
         //console.log(doname);
         //asynchronous
         this.result(doc);
