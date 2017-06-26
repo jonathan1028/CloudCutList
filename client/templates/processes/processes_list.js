@@ -1,6 +1,6 @@
 Template.processesList.helpers({
   processes: function() {
-    return Processes.find();
+    return Processes.find({template: true});
   }
 });
 

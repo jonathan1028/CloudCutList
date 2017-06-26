@@ -12,9 +12,30 @@ cloneProduct = function(productId, templateId){
     var height = eval(c.heightFormula);
     var depth = eval(c.depthFormula);  
     var componentName = c.name;
+    var clonedProcessList = [];
     console.log(c.processes);
-    //var processes = c.processes[0];
-    //componentMaterial = '';
+    
+    c.processes.forEach(i => {
+      var currentProcess = Processes.findOne(i);
+      console.log("Processes", currentProcess);
+      var newProcess = {
+        orderId: orderId,
+        name: currentProcess.name,
+        time: currentProcess.time,
+      }
+
+      //
+      var clonedProcess = Processes.insert(newProcess);
+
+     
+      console.log("Result", clonedProcess);
+
+      clonedProcessList.push(clonedProcess);
+    });
+
+    console.log("Cloned Process List", clonedProcessList);
+    
+
 
     if(c.type === 'Door'){
       var doorTemplateName = Components.findOne({_id: order.doorStyle}).name;
@@ -41,7 +62,7 @@ cloneProduct = function(productId, templateId){
           heightFormula: c.heightFormula,
           depthFormula: c.depthFormula,
           buildTime: c.buildTime,
-          processes: c.processes,
+          processes: clonedProcessList,
     };
 
     //console.log("List Processes:", processes);
@@ -161,14 +182,20 @@ cloneProduct = function(productId, templateId){
     });
 
     
-    
-    console.log(newComponent);
     Meteor.call('componentInsert', newComponent, function(error, resultId) {
       if (error){
         throwError(error.reason);
       } 
     });
 
+   
   });
 
 }
+
+
+
+
+
+
+
