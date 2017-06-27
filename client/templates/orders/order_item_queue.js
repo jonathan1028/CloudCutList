@@ -36,10 +36,24 @@ Template.orderItemQueue.helpers({
   getName: (processId) => {
     return Processes.findOne({_id: processId}).name;
   },
+  getProcess: () => {
+    return Processes.findOne({_id: this.id});
+  },
+  getCompleted: (processId) => {
+    return Processes.findOne({_id: processId}).completed;
+  },
   getTime: (processId, count) => {
     time = Processes.findOne({_id: processId}).time;
     totalTime = time * count;
     return totalTime;
+  },
+ 'checked': function(){
+      var isCompleted = Processes.findOne({_id: this.id}).completed;
+      if(isCompleted){
+          return "checked";
+      } else {
+          return "";
+      }
   },
   hrsRemaining: (processesList) => {
     totalTime = 0;
@@ -75,10 +89,33 @@ Template.orderItemQueue.helpers({
   },
 });
 
-Template.orderItemQueue.events({ 
-  'click .archive': function(e) { e.preventDefault();
-        Orders.update(this._id, {
-          $set: {status: "Archive"}
-        }); 
+
+Template.orderItemQueue.events({
+  /*'click [name=completeProcess]': function(event) {
+    //var x = $(event.target).is(":checked").val()
+    var x = event.target.checked;
+
+    Session.set('copySettingsState', event.target.checked);
+  },*/
+  'change [name=completedProcess]': function(){
+    var docId = this.id;
+    console.log(docId);
+    var thisProcess = Processes.findOne({_id: this.id});
+    
+
+    if(thisProcess.completed){
+        Processes.update({ _id: this.id }, {$set: { completed: null }});
+        console.log("Task marked as incomplete.");
+    } else {
+        var timeCompleted = new Date();
+        Processes.update({ _id: this.id }, {$set: { completed: timeCompleted }});
+        console.log("Task marked as complete.", timeCompleted);
     }
+  }
+ 
 });
+
+
+
+
+

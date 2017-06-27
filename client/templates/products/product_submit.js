@@ -8,29 +8,56 @@ Template.productSubmit.onCreated(function() {
 
 
 Template.productSubmit.helpers({
-  baseCabinets: function(orderId){
+  modelOptions: function () {
+    
+    var orderId = this.orderId;
     console.log(orderId);
     var orderCategory = Orders.findOne({_id: orderId}).category;
-    console.log(orderCategory);
-    return Products.find({category: orderCategory, subcategory: 'Base Cabinets', template: 1});
-  },
-  wallCabinets: function(orderId){
-    var orderCategory = Orders.findOne({_id: orderId}).category;
-    console.log(orderCategory);
-    return Products.find({category: orderCategory, subcategory: 'Wall Cabinets', template: 1});
-  },
-  tallCabinets: function(orderId){
-    var orderCategory = Orders.findOne({_id: orderId}).category;
-    console.log(orderCategory);
-    return Products.find({category: orderCategory, subcategory: 'Tall Cabinets', template: 1});
-  },
-  trim: function(){
-    return Products.find({subcategory: 'Trim', template: 1});
+
+    baseCabinets = [];
+    baseCabinets = Products.find({category: orderCategory, subcategory: 'Base Cabinets', template: 1}, {sort: {name: 1}}).map(function (i){
+      return {label: i.name, value: i._id};
+    });
+
+    wallCabinets = [];
+    wallCabinets = Products.find({category: orderCategory, subcategory: 'Wall Cabinets', template: 1}, {sort: {name: 1}}).map(function (i){
+      return {label: i.name, value: i._id};
+    });
+
+    tallCabinets = [];
+    tallCabinets = Products.find({category: orderCategory, subcategory: 'Tall Cabinets', template: 1}, {sort: {name: 1}}).map(function (i){
+      return {label: i.name, value: i._id};
+    });
+
+    trim = [];
+    trim = Products.find({category: orderCategory, subcategory: 'Trim', template: 1}, {sort: {name: 1}}).map(function (i){
+      return {label: i.name, value: i._id};
+    });
+    
+
+    return [
+      {
+        optgroup: "Base Cabinets",
+        options: baseCabinets,
+      },
+      {
+        optgroup: "Wall Cabinets",
+        options: wallCabinets,
+      },
+      {
+        optgroup: "Tall Cabinets",
+        options: tallCabinets,
+      },
+      {
+        optgroup: "Trim",
+        options: trim,
+      },
+    ];
   },
   defaultHeight: function(){
     if(Session.get('currentModel')){
-      var test = Session.get('currentModel');
-      var height = Products.findOne({model: test, template: 1}).height;
+      var modelId = Session.get('currentModel');
+      var height = Products.findOne({_id: modelId, template: 1}).height;
       return height;
     }
     else
@@ -38,42 +65,37 @@ Template.productSubmit.helpers({
   },
   defaultDepth: function(){
     if(Session.get('currentModel')){
-      var model = Session.get('currentModel');
-      var depth = Products.findOne({model: model, template: 1}).depth;
+      var modelId = Session.get('currentModel');
+      var depth = Products.findOne({_id: modelId, template: 1}).depth;
       return depth;
     }
     else
-      return null;
-    
+      return null; 
   },
   hasToeKick: function(){
-
     if(Session.get('currentModel')){
-      var model = Session.get('currentModel');
-      var subcategory = Products.findOne({template: 1, model: model}).subcategory;
+      var modelId = Session.get('currentModel');
+      var subcategory = Products.findOne({_id: modelId, template: 1}).subcategory;
       if(subcategory === 'Wall Cabinets' || subcategory === 'Trim'){
         return false;
       }
     }
     
     return true;
-
   },
   notTrim: function(){
-
     if(Session.get('currentModel')){
-      var model = Session.get('currentModel');
-      var subcategory = Products.findOne({template: 1, model: model}).subcategory;
+      var modelId = Session.get('currentModel');
+      var subcategory = Products.findOne({_id: modelId, template: 1}).subcategory;
       if(subcategory === 'Trim'){
         return false;
       }
     }
     
     return true;
-
   },
-  multipleProducts: function(orderId){
-    if(Products.find({orderId: orderId}).count() > 0){
+  multipleProducts: function(){
+    if(Products.find({orderId: this.orderId}).count() > 0){
       return true; 
     }
     else{
@@ -89,75 +111,6 @@ Template.productSubmit.helpers({
     else
       return false;
   },
-  doorOptionsHelper: function(){
-    return Components.find({template: 2}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  drawerFaceOptionsHelper: function(){
-    return Components.find({template: 3}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  caseMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  doorFrameMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  doorPanelMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  //drawer material helpers
-  drawerFaceFrameMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  drawerFacePanelMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  drawerBoxSideMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Drawer Box Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  drawerBoxBottomMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-
-  ffMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Hardwood Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  shelfMaterialOptionsHelper: function(){
-    return InputCosts.find({type: 'Case Material'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  runnersOptionsHelper: function(){
-    return InputCosts.find({type: 'Drawer Runner'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-  hingesOptionsHelper: function(){
-    return InputCosts.find({type: 'Hinge'}).map(function (c){
-      return {label: c.name, value: c._id};
-    });
-  },
-
- 
 });
 
 AutoForm.hooks({
@@ -166,10 +119,9 @@ AutoForm.hooks({
       insert: function(doc) {
         var orderId = this.template.data.orderId;
         doc.orderId = orderId;
-        doc.model = Session.get('currentModel');
 
         //Looks up template to be clonsed
-        var productTemplate = Products.findOne({model: doc.model, template: 1});
+        var productTemplate = Products.findOne({_id: doc.model});
         
         //Creates a more user friendly name
         doc.name = doc.width + '" ' + productTemplate.name; 
@@ -192,28 +144,17 @@ AutoForm.hooks({
         if(Session.get('copySettingsState') === true){
           var lastProduct = Products.findOne({orderId: orderId}, {sort: {submitted: -1, limit: 1}});
 
-          //doc.finishType = lastProduct.finishType;
-          //doc.finishColor = lastProduct.finishColor;
-          
-          //doc.doorStyle = lastProduct.doorStyle;
-          //doc.drawerFaceStyle = lastProduct.drawerFaceStyle;
-          doc.topOffset = lastProduct.topOffset;
-          doc.bottomOffset = lastProduct.bottomOffset;
+          doc.height = lastProduct.height;
+          doc.depth = lastProduct.depth;
+          doc.toeKickHeight = lastProduct.toeKickHeight;
+          doc.toeKickDepth = lastProduct.toeKickDepth;
+
           doc.leftOffset = lastProduct.leftOffset;
           doc.rightOffset = lastProduct.rightOffset;
+          doc.topOffset = lastProduct.topOffset;
+          doc.bottomOffset = lastProduct.bottomOffset;
           doc.centerOffset = lastProduct.centerOffset;
           doc.drawerOffset = lastProduct.drawerOffset;
-
-          //doc.caseMaterial = lastProduct.caseMaterial;
-          //doc.caseBackMaterial = lastProduct.caseBackMaterial;
-          //doc.doorFrameMaterial = lastProduct.doorFrameMaterial;
-          //doc.doorPanelMaterial = lastProduct.doorPanelMaterial;
-          //doc.drawerFaceFrameMaterial = lastProduct.drawerFaceFrameMaterial;
-          //doc.drawerFacePanelMaterial = lastProduct.drawerFacePanelMaterial;
-          //doc.drawerBoxSideMaterial = lastProduct.drawerBoxSideMaterial;
-          //doc.drawerBoxBottomMaterial = lastProduct.drawerBoxBottomMaterial;
-          //doc.ffMaterial = lastProduct.ffMaterial;
-          //doc.shelfMaterial = lastProduct.shelfMaterial;
         }
        
         
@@ -227,12 +168,8 @@ AutoForm.hooks({
 AutoForm.hooks({
   productSubmit: {
     onSuccess: function(update, resultId) {
+      var productTemplateId = Products.findOne({_id: resultId}).model;
      
-      var productTemplateId = Products.findOne({model: Session.get('currentModel'), template: 1})._id;
-      //console.log(productTemplateId);
-      //var orderId = this.template.data.orderId;
-      //var productTemplateId = Products.findOne({model: doc.model, template: 1})._id;
-      //cloneComponents
       cloneProduct(resultId, productTemplateId);
       cloneDoor(resultId, productTemplateId);
       cloneDrawerFace(resultId, productTemplateId);
@@ -241,10 +178,11 @@ AutoForm.hooks({
 });
 
 Template.productSubmit.events({
-  'change #model': function(event) {
+  'change [name=model]': function(event) {
     var model = event.target.value
     Session.set("currentModel", model);
     var test3 = Session.get("currentModel");
+    console.log(test3);
 
   }, 
   'click [name=copySettings]': function(event) {

@@ -16,7 +16,12 @@
       <!-- {{processesList}} -->
         {{#each processesList}}
           <div class="list-item">
-          <input type="checkbox"> {{getName this.id}}, {{getTime this.id this.count}}
+              <input type="checkbox" {{checked}} name="completedProcess">
+           
+
+          <!-- <input type="checkbox" value={{completed}} class="toggle-checked" /> -->
+          <!-- <input type="checkbox" name="completeProcess" checked="checked"> --> 
+          {{getName this.id}}, {{getTime this.id this.count}}, {{getCompleted this.id}}
           
 
           </div>

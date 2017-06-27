@@ -4,14 +4,18 @@
     <fieldset>
       <legend>Add Product</legend>
       
-      <div class="form-inline">
+      {{> afFormGroup name='model' type="select" options=modelOptions template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+  
+
+
+      <!-- <div class="form-inline">
         <label>Model</label>
         <select name="model" id="model" class="form-control">
             <option disabled="disabled" selected="selected">Select Cabinet Type</option> 
             
             <optgroup label="Base Cabinets">
               {{#each baseCabinets this.orderId}}
-                <option value={{model}}> {{name}}</option>
+                <option value={{_id}}> {{name}}</option>
               {{/each}}
             </optgroup> 
 
@@ -34,7 +38,7 @@
             </optgroup>
 
         </select>
-      </div>
+      </div> -->
       <br>
       {{> afQuickField name='location' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
       
@@ -44,20 +48,22 @@
 
       <h4>Dimensions</h4>
       {{> afQuickField name='width' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-      {{> afQuickField name='height' value=defaultHeight template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
-      {{> afQuickField name='depth' value=defaultDepth template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
+      
+      {{#if multipleProducts this.orderId}}
+        <input type="checkbox" name="copySettings" checked="checked"> Copy settings from previous product.<br>
+        {{#if displaySettings}}
+          {{> afQuickField name='height' value=defaultHeight template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
+          {{> afQuickField name='depth' value=defaultDepth template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
 
-      {{#if hasToeKick}}
-        {{> afQuickField name='toeKickHeight' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-        {{> afQuickField name='toeKickDepth' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
-      {{/if}}
+      
+          {{#if notTrim}}
 
-      {{#if notTrim}}
-        {{#if multipleProducts this.orderId}}
-          <input type="checkbox" name="copySettings" checked="checked"> Copy settings from previous product.<br>
-        {{/if}}
-          {{#if displaySettings}}
-            <h4>Doors & Drawers</h4>  
+            {{#if hasToeKick}}
+              {{> afQuickField name='toeKickHeight' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+              {{> afQuickField name='toeKickDepth' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
+            {{/if}}
+
+            <h4>Doors & Drawer Reveals</h4>  
             {{> afQuickField name='leftOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
             {{> afQuickField name='rightOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
             {{> afQuickField name='topOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
@@ -65,11 +71,9 @@
             {{> afQuickField name='drawerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
             {{> afQuickField name='centerOffset' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
             
-           
-            
-        
-          
           {{/if}}
+            
+        {{/if}}
       {{/if}}
       
     </fieldset>
