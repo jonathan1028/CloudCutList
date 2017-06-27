@@ -1,9 +1,7 @@
 Template.productSubmit.onCreated(function() {
   //this.state = new ReactiveDict();
-  Session.set("copySettingsState", true);
-  //Session.set('cabinetSubmitErrors', {});
-  //Session.set('cabinetModel','Test');
-  Session.set('FinishType', null);
+  Session.set("displayAllSettings", true);
+
 });
 
 
@@ -96,20 +94,28 @@ Template.productSubmit.helpers({
   },
   multipleProducts: function(){
     if(Products.find({orderId: this.orderId}).count() > 0){
+      Session.set("displayAllSettings", false);
+      Session.set("copyPreviousSettings", true);
       return true; 
     }
     else{
-      Session.set("copySettingsState", false);
+      Session.set("displayAllSettings", true);
       return false; 
-    }
-
-         
+    }      
   },
-  displaySettings: function(){
-    if(Session.get("copySettingsState") === false)
+  displayAllSettings: function(){
+    if(Session.get("displayAllSettings"))
       return true; 
     else
       return false;
+  },
+  isChecked: function(){
+      var isChecked = Session.get("copyPreviousSettings");
+      if(isChecked){
+          return true;
+      } else {
+          return false;
+      }
   },
 });
 
@@ -141,7 +147,7 @@ AutoForm.hooks({
 
         
         //Copy settings of previous product
-        if(Session.get('copySettingsState') === true){
+        if(Session.get('copyPreviousSettings') === true){
           var lastProduct = Products.findOne({orderId: orderId}, {sort: {submitted: -1, limit: 1}});
 
           doc.height = lastProduct.height;
@@ -173,6 +179,7 @@ AutoForm.hooks({
       cloneProduct(resultId, productTemplateId);
       cloneDoor(resultId, productTemplateId);
       cloneDrawerFace(resultId, productTemplateId);
+      Session.set("copyPreviousSettings", true);
     }
   }
 });
@@ -185,9 +192,9 @@ Template.productSubmit.events({
     console.log(test3);
 
   }, 
-  'click [name=copySettings]': function(event) {
-    //var x = $(event.target).is(":checked").val()
+  'click [name=copyPreviousSettings]': function(event){
     var x = event.target.checked;
-    Session.set('copySettingsState', event.target.checked);
+    Session.set('copyPreviousSettings', event.target.checked);
+    Session.set('displayAllSettings', !event.target.checked);
   },
 });

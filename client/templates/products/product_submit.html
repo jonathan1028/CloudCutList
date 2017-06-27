@@ -49,9 +49,12 @@
       <h4>Dimensions</h4>
       {{> afQuickField name='width' template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}} 
       
+
       {{#if multipleProducts this.orderId}}
-        <input type="checkbox" name="copySettings" checked="checked"> Copy settings from previous product.<br>
-        {{#if displaySettings}}
+        <input type="checkbox" checked={{isChecked}} name="copyPreviousSettings" > Copy settings from previous product.<br>  
+      {{/if}}  
+
+        {{#if displayAllSettings}}
           {{> afQuickField name='height' value=defaultHeight template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
           {{> afQuickField name='depth' value=defaultDepth template="bootstrap3-horizontal" label-class="col-md-3" input-col-class="col-md-9"}}
 
@@ -74,7 +77,7 @@
           {{/if}}
             
         {{/if}}
-      {{/if}}
+      
       
     </fieldset>
     <button type="submit" class="btn btn-primary">Submit</button>
