@@ -15,7 +15,8 @@ cloneProduct = function(productId, templateId){
     var clonedProcessList = [];
     console.log(c.processes);
     
-    c.processes.forEach(i => {
+    if(c.processes){
+      c.processes.forEach(i => {
       var currentProcess = Processes.findOne(i);
       console.log("Processes", currentProcess);
       var newProcess = {
@@ -31,7 +32,9 @@ cloneProduct = function(productId, templateId){
       console.log("Result", clonedProcess);
 
       clonedProcessList.push(clonedProcess);
-    });
+      });
+    }
+    
 
     console.log("Cloned Process List", clonedProcessList);
     

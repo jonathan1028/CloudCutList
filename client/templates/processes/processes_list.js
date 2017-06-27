@@ -1,6 +1,6 @@
 Template.processesList.helpers({
   processes: function() {
-    return Processes.find({template: true});
+    return Processes.find({template: true}, {sort: {name: 1}});
   }
 });
 
