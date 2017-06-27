@@ -49,6 +49,7 @@ Template.orderItemQueue.helpers({
   getTime: (processId, count) => {
     time = Processes.findOne({_id: processId}).time;
     totalTime = time * count;
+    totalTime = accounting.formatMoney(totalTime, "", 2);
     return totalTime;
   },
  'checked': function(){

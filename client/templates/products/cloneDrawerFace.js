@@ -7,6 +7,46 @@ cloneDrawerFace = function(productId, templateId){
   
   Components.find({productId: productId, type: 'Drawer Face'}).forEach(function(c) {
     
+    //Grabs processList from Component
+    var newProcessList = c.processes;
+    
+    //clones all drawer face processes from the component drawer face template
+    Components.find({_id: order.drawerFaceStyle}).forEach(function(t) {
+      
+      console.log(t.processes);
+      
+      //copies template processes
+      if(t.processes){
+        t.processes.forEach(i => {
+          var currentProcess = Processes.findOne(i);
+          console.log("Processes", currentProcess);
+          var newProcess = {
+            orderId: orderId,
+            name: currentProcess.name,
+            time: currentProcess.time,
+          }
+          //creation of cloned process
+          var clonedProcess = Processes.insert(newProcess);
+          //Adds process to nonTemplate Components already existing processList
+          newProcessList.push(clonedProcess);
+        });
+      }
+      
+      console.log("New Drawer Face Process List", newProcessList);
+
+    });
+
+    var componentProperties = {
+      processes: newProcessList,
+    }
+    
+    //Overwrites existing processlist with newly created one
+    Components.update(c._id, {$set: componentProperties}, function(error) { 
+      if (error) {
+        throwError(error.reason);
+      } 
+    });
+
     //Var must be named "cpmponent" in order to work with supplied formulas.
     var component = c;
 
