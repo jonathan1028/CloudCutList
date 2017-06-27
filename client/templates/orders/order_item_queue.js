@@ -13,16 +13,16 @@ Template.orderItemQueue.helpers({
       if(processSet){
         //iterates through current Component's list of processes
         processSet.forEach(function(i){
-          
+          thisProcess = Processes.findOne({_id: i});
           //if process is unique add it to the list array
-          if(!list.find( function( ele ) { return ele.id === i;} ) )
+          if(!list.find( function( ele ) { return ele.name === thisProcess.name;} ) )
           {
-            list.push({id: i, count: 1});
+            list.push({id: i, count: 1, name: thisProcess.name, time: thisProcess.time});
           }
           //if process has already been added to the list, increase it's count
           else
           {
-            x = list.find( function( ele ) { return ele.id === i;});
+            x = list.find( function( ele ) { return ele.name === thisProcess.name;});
             y = x.count;
             y++;
             x.count = y;
@@ -40,7 +40,11 @@ Template.orderItemQueue.helpers({
     return Processes.findOne({_id: this.id});
   },
   getCompleted: (processId) => {
-    return Processes.findOne({_id: processId}).completed;
+    var completed = Processes.findOne({_id: processId}).completed;
+    if(completed)
+      return moment(completed).format('MM/DD/YYYY');
+    else
+      return null;
   },
   getTime: (processId, count) => {
     time = Processes.findOne({_id: processId}).time;
@@ -63,7 +67,7 @@ Template.orderItemQueue.helpers({
       time = parseFloat(Processes.findOne({_id: i.id}).time) * i.count;
       totalTime = totalTime + time;
     });  
-
+    totalTime = accounting.formatMoney(totalTime, "", 2);
     return totalTime;
   },
   productCount: function() {

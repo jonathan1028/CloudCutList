@@ -1,0 +1,46 @@
+<template name="processListPage">
+  <div class="restaurant-page page">
+    
+    <ul class="comments">
+
+
+
+    <h1 class="center">{{this.jobName}} - Process List</h1>
+
+
+    
+          <div class="table">
+              <table>
+              <col width="200">
+              <col width="50">
+                <thead>
+                  <tr>
+                    <th>Process</th>
+                    <th>Time (Hrs)</th> 
+                 
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- {{#each parts this}} -->
+                  {{#each processesList}}
+                  <tr>
+                    <td >{{getName this.id}}</td>
+                    <td>{{getTime this.id this.count}}</td>
+                 
+                  </tr>
+                  {{/each}}
+                  <!-- {{/each}} -->
+                </tbody>
+              </table>
+          </div>
+       
+
+    
+
+
+
+    </ul>
+   
+
+  </div>
+</template>

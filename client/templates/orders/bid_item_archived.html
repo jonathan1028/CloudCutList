@@ -1,0 +1,19 @@
+<template name="bidItemArchived">
+  <div class="list">
+    <div class="list-item">
+      <h3><a href="{{pathFor 'bidPage'}}">{{jobName}}</a><span></span></h3>
+      <p>Customer: {{customerName}}</p>
+      <p>Quantity: {{productCount}} Cabinets</p>
+      <p>Status: {{status}}</p>
+      
+      <br>
+      <p><strong>Bid Amount: {{totalCost}}</strong></p>
+    </div>
+    
+    <div class="btn-group float-right">
+      <a href="{{pathFor 'estimatePage'}}" class="btn btn-default">Estimate</a>
+      <a href="{{pathFor 'bidEdit'}}" class="btn btn-default">Edit</a>
+    </div>
+
+  </div>
+</template>

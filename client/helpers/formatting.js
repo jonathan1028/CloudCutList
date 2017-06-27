@@ -3,6 +3,10 @@ Template.registerHelper('formatCurrency', function(num) {
     return accounting.formatMoney(num, "$", 2);
 });
 
+Template.registerHelper('formatDecimal', function(num) {
+    return accounting.formatMoney(num, "", 2);
+});
+
 Template.registerHelper('formatPercent', function(num) {
     num = num * 100;
     num = num.toFixed(1);
