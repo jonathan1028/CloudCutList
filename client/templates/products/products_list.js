@@ -33,7 +33,8 @@ Template.productsList.helpers({
   },
   trim: function() {
     var category = Session.get("currentCategory");
-    return Products.find({category: category, template: 1, subcategory: 'Trim'});
+    //is not filtered by category
+    return Products.find({template: 1, subcategory: 'Trim'});
   },
 });
 

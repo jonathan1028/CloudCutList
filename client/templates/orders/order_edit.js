@@ -34,11 +34,11 @@ Template.orderEdit.helpers({
   //-------------------- Materials ----------------------------------------------------------
   roughLumberAndSheetGoods: function () {
     sheetGoods = [];
-    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}, {sort: {name: 1}}).map(function (c){
       return {label: c.name, value: c._id};
     });
     roughLumber = [];
-    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}, {sort: {name: 1}}).map(function (c){
       return {label: c.name, value: c._id};
     });
 
@@ -55,7 +55,7 @@ Template.orderEdit.helpers({
   },
   sheetGoods: function () {
     sheetGoods = [];
-    sheetGoods = InputCosts.find({type: 'Sheet Good'}).map(function (c){
+    sheetGoods = InputCosts.find({type: 'Sheet Good'}, {sort: {name: 1}}).map(function (c){
       return {label: c.name, value: c._id};
     });
     return [
@@ -67,7 +67,7 @@ Template.orderEdit.helpers({
   },
   roughLumber: function () {
     roughLumber = [];
-    roughLumber = InputCosts.find({type: 'Rough Lumber'}).map(function (c){
+    roughLumber = InputCosts.find({type: 'Rough Lumber'}, {sort: {name: 1}}).map(function (c){
       return {label: c.name, value: c._id};
     });
 

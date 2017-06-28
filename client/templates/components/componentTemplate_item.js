@@ -1,6 +1,6 @@
 Template.componentTemplateItem.helpers({
 	grabName: (processId) => {
-		return Processes.findOne({_id: processId}).name;
+		return Processes.findOne({_id: processId}, {sort: {name: 1}}).name;
 	},  
     
 });

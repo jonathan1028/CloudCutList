@@ -45,8 +45,7 @@ Template.componentTemplatesList.helpers({
     return Components.find({category: productCategory, template: 1, type: 'Shelf' });
   },
   trim: function() {
-    //return Components.find({template: 1, type: {$ne: 'Door'}, type: {$ne: 'Drawer Face'}});
-    var productCategory = Session.get("currentProductCategory");
+    //trim is not filtered by category
     return Components.find({template: 1, type: 'Trim' });
   },
   doorComponents: function() {

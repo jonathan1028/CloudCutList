@@ -13,13 +13,10 @@ cloneDrawerFace = function(productId, templateId){
     //clones all drawer face processes from the component drawer face template
     Components.find({_id: order.drawerFaceStyle}).forEach(function(t) {
       
-      console.log(t.processes);
-      
       //copies template processes
       if(t.processes){
         t.processes.forEach(i => {
           var currentProcess = Processes.findOne(i);
-          console.log("Processes", currentProcess);
           var newProcess = {
             orderId: orderId,
             name: currentProcess.name,
@@ -31,8 +28,6 @@ cloneDrawerFace = function(productId, templateId){
           newProcessList.push(clonedProcess);
         });
       }
-      
-      console.log("New Drawer Face Process List", newProcessList);
 
     });
 

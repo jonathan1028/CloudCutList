@@ -28,7 +28,7 @@ Template.productSubmit.helpers({
     });
 
     trim = [];
-    trim = Products.find({category: orderCategory, subcategory: 'Trim', template: 1}, {sort: {name: 1}}).map(function (i){
+    trim = Products.find({subcategory: 'Trim', template: 1}, {sort: {name: 1}}).map(function (i){
       return {label: i.name, value: i._id};
     });
     

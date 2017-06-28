@@ -8,7 +8,7 @@ Template.componentTemplateEdit.onCreated(function() {
 Template.componentTemplateEdit.helpers({
   processesOptions: function () {
     processes = [];
-    processes = Processes.find({template: true}).map(function (c){
+    processes = Processes.find({template: true}, {sort: {name: 1}}).map(function (c){
       //console.log(c.name);
       return {label: c.name, value: c._id};
 
