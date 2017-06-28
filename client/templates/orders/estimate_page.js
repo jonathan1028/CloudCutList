@@ -6,9 +6,26 @@ Template.estimatePage.helpers({
   orders: function() {
     return Orders.find();
   },
-  products: function() {
+  locations: function() {
+    var list = [];
     
-    return Products.find({orderId: this._id}); 
+    //Finds all processes for the order
+    Products.find({orderId: this._id}).forEach(function(i) { 
+
+      if(i.location){
+        console.log(i.location);
+        if(!list.find( function( ele ) { return ele.value === i.location;} ) )
+          list.push({value: i.location, label: i.location});
+      }
+    });
+    list.push({value: null, label: "No Location Set"});
+    console.log("List",list);
+    
+    return list;
+  },
+  products: function(orderId, location) {
+    console.log(orderId);
+    return Products.find({orderId: orderId, location: location}); 
   },
   laborCost: function() {
     var totalTime = 0; 

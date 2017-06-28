@@ -16,7 +16,7 @@
                 <thead>
                   <tr>
                     <th>Process</th>
-                    <th>Time (Hrs)</th> 
+                    <th class="text-right">Time (Hrs)</th> 
                  
                   </tr>
                 </thead>
@@ -25,7 +25,7 @@
                   {{#each processesList}}
                   <tr>
                     <td >{{getName this.id}}</td>
-                    <td>{{getTime this.id this.count}}</td>
+                    <td class="text-right">{{getTime this.id this.count}}</td>
                  
                   </tr>
                   {{/each}}

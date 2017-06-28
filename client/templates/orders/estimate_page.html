@@ -27,6 +27,7 @@
 
       <table>
         <thead>
+          
           <tr>
             <th>Product</th>
             <th>Dimensions</th>
@@ -34,16 +35,20 @@
           </tr>
         </thead>
       <tbody>
-        {{#each products}}
-          <tr class="tableRow">
-             
-            <td class="text-left">{{name}}</td>
-            <td>{{convertToFraction this.width}}" x {{convertToFraction this.height}}" x {{convertToFraction this.depth}}"</td>
-            <td class="text-right text-middle">{{productCost}}</td>
-          
+      {{#each locations}}
+        <td colspan="3"><strong>{{this.label}}</strong></td>
+          {{#each products ../_id this.value}}
+            <tr class="tableRow">
+               
+              <td class="text-left">{{name}}</td>
+              <td>{{convertToFraction this.width}}" x {{convertToFraction this.height}}" x {{convertToFraction this.depth}}"</td>
+              <td class="text-right text-middle">{{productCost}}</td>
             
-          </tr>
+              
+            </tr>
+          {{/each}}
         {{/each}}
+
         
        <!--  {{#EasySearch.Each index=indexTwo}}
           <tr class="tableRow">
