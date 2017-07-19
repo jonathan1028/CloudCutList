@@ -98,6 +98,12 @@ Template.productItem.events({
       var currentProduct = this._id; 
       
       Components.find({productId: this._id}).forEach(function(c) {
+          var processList = c.processes;
+          if(processList){
+            processList.forEach(function (i){
+              Processes.remove(i);  
+            });
+          }
           Components.remove(c._id);
           console.log("Remove Component");
       });

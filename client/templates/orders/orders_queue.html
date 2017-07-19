@@ -1,8 +1,29 @@
 <template name="ordersQueue">
   
   <div>
-    <h3>Order Queue</h3>
+  	<h3>Total Queue</h3>
+  	<div class="list">
+      <div class="list-item">
+        <form class="form-horizontal">
+        
+          <div class="form-group">
+            <label class="control-label col-sm-7" for="title">Labor Availability (Hrs/Week):</label>
+            <div class="col-sm-5">
+                <input name="availableLabor" type="decimal" value={{availableLabor}} placeholder="" class="form-control"/>
+            </div>
+          </div>
 
+          	<p >Labor Hours in Queue: {{timeInQueue}}</p>
+          <!-- <p>Percent Complete: {{percentComplete}}%</p> -->
+          	<p ><strong>Queue Completion Date: {{completionDate timeInQueue}}</strong></p>
+          
+
+          <input type="submit" value="Update" class="btn btn-primary"/>
+        </form>
+      </div>
+    </div>
+
+    <h3>Progress of Orders</h3> 
     {{#each orders}}
       {{> orderItemQueue}}
     {{/each}}

@@ -36,6 +36,13 @@ h1 {
 #spinner {
   height: 300px; }
 
+
+
+
+.form-horizontal .control-label{
+  text-align:left;
+}  
+
 .table{
   background: #fff;
   /*border: 1px solid black;*/

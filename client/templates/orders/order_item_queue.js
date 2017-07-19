@@ -65,11 +65,40 @@ Template.orderItemQueue.helpers({
     time = 0;
       //time = Processes.findOne({_id: processId}).time;
     processesList.forEach(function (i){
-      time = parseFloat(Processes.findOne({_id: i.id}).time) * i.count;
-      totalTime = totalTime + time;
+      var thisProcess = Processes.findOne({_id: i.id});
+      if(thisProcess.completed === null){
+        time = parseFloat(thisProcess.time * i.count);
+        totalTime = totalTime + time;
+      }
+      
     });  
     totalTime = accounting.formatMoney(totalTime, "", 2);
     return totalTime;
+  },
+  percentComplete: (processesList) => {
+    time = 0;
+    totalTime = 0;
+    completedTotalTime = 0;
+    completedTime = 0;
+    percentComplete = 0;
+
+    processesList.forEach(function (i){
+      var thisProcess = Processes.findOne({_id: i.id});
+      
+      time = parseFloat(thisProcess.time * i.count);
+      totalTime = totalTime + time;
+
+      if(thisProcess.completed === null){
+        completedTime = parseFloat(thisProcess.time * i.count);
+        completedTotalTime = completedTotalTime + completedTime;
+      } 
+    });  
+
+    //percentComplete = completedTotalTime/totalTime;
+    percentComplete = (totalTime - completedTotalTime)/totalTime * 100;
+
+    percentComplete = accounting.formatMoney(percentComplete, "", 2);
+    return percentComplete;
   },
   productCount: function() {
     return Products.find({orderId: this._id}).count();
@@ -105,16 +134,43 @@ Template.orderItemQueue.events({
   'change [name=completedProcess]': function(){
     var docId = this.id;
     console.log(docId);
-    var thisProcess = Processes.findOne({_id: this.id});
+    var checkedProcess = Processes.findOne({_id: this.id});
     
 
-    if(thisProcess.completed){
-        Processes.update({ _id: this.id }, {$set: { completed: null }});
-        console.log("Task marked as incomplete.");
-    } else {
-        var timeCompleted = new Date();
-        Processes.update({ _id: this.id }, {$set: { completed: timeCompleted }});
-        console.log("Task marked as complete.", timeCompleted);
+    if(checkedProcess.completed){
+
+      Components.find({orderId: checkedProcess.orderId}).forEach(i => {
+        
+        var processList = i.processes
+        processList.forEach(p=>{
+          var thisProcess = Processes.findOne({_id: p});
+          if(thisProcess.name === checkedProcess.name)
+          {
+              //Sets all processes in the order with the same name to null
+              Processes.update({ _id: thisProcess._id }, {$set: { completed: null }});
+              
+
+          }
+        });
+      });
+        
+    } 
+    else {
+      var timeCompleted = new Date();
+      
+      Components.find({orderId: checkedProcess.orderId}).forEach(i => {
+      
+        var processList = i.processes
+        processList.forEach(p=>{
+          var thisProcess = Processes.findOne({_id: p});
+          if(thisProcess.name === checkedProcess.name)
+          {
+              //Sets all processes in the order with the same name to the current date
+              Processes.update({ _id: p }, {$set: { completed: timeCompleted }});
+          }
+        });
+      });
+
     }
   }
  

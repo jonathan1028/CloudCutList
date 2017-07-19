@@ -2,15 +2,16 @@
   <div class="list">
     <div class="list-item">
       <h3><a href="{{pathFor 'orderPage'}}">{{jobName}}</a><span></span></h3>
-      <p>Customer: {{customerName}}</p>
-      <p>Quantity: {{productCount}} Cabinets</p>
-
-      <p>Progress: 0% Complete</p>
+      <p>{{customerName}}</p>
+      <p>{{productCount}} Cabinets</p>
+      <br>
+      <strong><p>Due Date: {{formatDate dueDate}}</p></strong>
+      <p>Progress: {{percentComplete processesList}} % Complete</p>
       <p>Hrs Remaining:    
           {{hrsRemaining processesList}}
       </p>
-
-      <strong><p>Due Date: {{formatDate dueDate}}</p></strong>
+      <br>
+      
 
       <strong><p>Processes: </p></strong>
       <!-- {{processesList}} -->

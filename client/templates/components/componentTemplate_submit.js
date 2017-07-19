@@ -1,5 +1,5 @@
 Template.componentTemplateSubmit.onCreated(function() {
- 
+  Session.set("Category", null); 
 });
 
 Template.componentTemplateSubmit.helpers({
@@ -22,6 +22,7 @@ AutoForm.hooks({
       insert: function(doc) {
         //declares this document to be a template
         doc.template = 1;
+
         //asynchronous submission
         this.result(doc);
       }
